@@ -28,7 +28,7 @@ export async function submitDemoRequest(
   }
 
   const { error } = await resend.emails.send({
-    from: "Foreturn IQ <onboarding@resend.dev>",
+    from: "Foreturn IQ <dominick@foreturniq.com>",
     to: "dominick@foreturniq.com",
     subject: `Demo request from ${name} — ${courseName}`,
     html: `
