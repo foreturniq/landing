@@ -6,6 +6,7 @@
   --navy: #1B3068;
   --green: #3AAA35;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --spring: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @theme inline {
@@ -47,7 +48,7 @@ html {
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -90,7 +91,7 @@ html {
 
 /* Targeted transitions — never use transition-all */
 @utility transition-btn {
-  transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+  transition: opacity 600ms var(--spring), transform 600ms var(--spring);
 }
 
 @utility transition-input {
