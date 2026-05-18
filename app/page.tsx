@@ -20,7 +20,7 @@ const benefits = [
   {
     Icon: CurrencyDollarSimpleIcon,
     title: "Higher spend before they arrive",
-    body: "Golfers pre-order from home, the parking lot, or the pro shop — before their round starts. Without a line or a tee time counting down, they browse more and add more. Pre-orders consistently outpace counter transactions on average ticket.",
+    body: "Golfers pre-order from home, the parking lot, or the pro shop, before their round starts. Without a line or a tee time counting down, they browse more and add more. Pre-orders consistently outpace counter transactions on average ticket.",
   },
   {
     Icon: TrendUpIcon,
@@ -30,7 +30,7 @@ const benefits = [
   {
     Icon: TimerIcon,
     title: "Your kitchen knows when, not just what",
-    body: "The order queue organizes tickets by timing: Prepare Now, Coming Up, Later Today. Each shows when to start prepping — 15 minutes before the golfer arrives.",
+    body: "The order queue organizes tickets by timing: Prepare Now, Coming Up, Later Today. Each shows when to start prepping, 15 minutes before the golfer arrives.",
   },
   {
     Icon: WrenchIcon,
@@ -43,13 +43,13 @@ const platformFeatures = [
   {
     tag: "Kitchen",
     name: "Real-time order queue",
-    body: "Orders arrive in a live dashboard bucketed by timing: Prepare Now, Coming Up, and Later Today. Each ticket shows the golfer's predicted arrival and when to start prepping — 15 minutes before they get there.",
+    body: "Orders arrive in a live dashboard bucketed by timing: Prepare Now, Coming Up, and Later Today. Each ticket shows the golfer's predicted arrival and when to start prepping, 15 minutes before they get there.",
     Mockup: OrderQueueMockup,
   },
   {
     tag: "Ordering",
     name: "Three pickup windows",
-    body: "Golfers choose Before Round, At Turn, or After Round when they order. Each window has its own timing logic — predicted arrival and prep start are calculated automatically.",
+    body: "Golfers choose Before Round, At Turn, or After Round when they order. Each window has its own timing logic. Predicted arrival and prep start are calculated automatically.",
     Mockup: OrderingWindowsMockup,
   },
   {
@@ -67,7 +67,7 @@ const platformFeatures = [
   {
     tag: "Setup",
     name: "Menu builder",
-    body: "Create items with a name, price, category, and which ordering windows they're available in. Activate and deactivate from the admin panel any time — no code, no support ticket.",
+    body: "Create items with a name, price, category, and which ordering windows they're available in. Activate and deactivate from the admin panel any time. No code, no support ticket.",
     Mockup: MenuBuilderMockup,
   },
   {
@@ -166,17 +166,17 @@ export default function Home() {
                 className="text-[3.75rem] sm:text-[4.75rem] md:text-[5.5rem] lg:text-[6rem] font-bold tracking-tighter leading-[0.92] text-white mb-7 animate-fade-up"
                 style={{ animationDelay: "60ms" }}
               >
-                Ordered on<br />Their Phone.<br />Before the Turn.
+                More Orders Per Round.<br />Zero New Hardware.
               </h1>
               <p
                 className="text-lg text-white/55 leading-relaxed max-w-[42ch] mb-10 animate-fade-up"
                 style={{ animationDelay: "120ms" }}
               >
-                Cart screens wait for golfers to stop. Foreturn IQ captures
-                the food and beverage order — and payment — mid-round, on
-                the golfer&apos;s own phone. By the time they reach the turn,
-                the transaction is done and your kitchen has a timed prep
-                queue — not just an order list.
+                Golfers order food and beverage before their round starts,
+                from their own phone. No counter, no line, no lost revenue at
+                the turn. Your kitchen gets a timed queue that shows when to
+                start prep, not just what was ordered. Nothing to install.
+                Nobody to retrain.
               </p>
               <div
                 className="flex flex-wrap items-center gap-4 animate-fade-up"
@@ -212,7 +212,7 @@ export default function Home() {
 
       {/* Social proof strip */}
       <div className="py-3.5 px-6 text-center text-[11px] font-medium text-white/65 tracking-wide bg-[#152654]">
-        Currently piloting with courses across the country — spots are limited.
+        Currently piloting with courses across the country. Spots are limited.
       </div>
 
       {/* Benefits */}

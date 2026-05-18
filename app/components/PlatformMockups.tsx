@@ -308,7 +308,7 @@ export function MenuBuilderMockup() {
       <div className="px-4 py-2.5 border-b border-zinc-800 flex items-center justify-between flex-shrink-0">
         <div>
           <p className="text-[9px] font-semibold text-green">
-            Foreturn IQ — Admin
+            Foreturn IQ Admin
           </p>
           <p className="text-white text-[10px] font-semibold">Manage offers</p>
         </div>
@@ -386,7 +386,7 @@ export function QuickReorderMockup() {
               ))}
             </div>
             <button className="w-full bg-green text-white text-[9px] font-bold rounded-lg py-1.5">
-              Reorder — $19.50
+              Reorder for $19.50
             </button>
           </div>
           <p className="text-center text-[7px] text-zinc-600">

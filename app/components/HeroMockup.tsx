@@ -69,7 +69,7 @@ export default function HeroMockup() {
                 <div className="rounded-xl bg-green/10 border border-green/25 px-3 py-2.5 flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-green flex-shrink-0" />
                   <p className="text-[10px] font-semibold text-green leading-snug">
-                    Order confirmed — ready at the turn
+                    Order confirmed. Ready at the turn.
                   </p>
                 </div>
               </div>

@@ -30,14 +30,14 @@ export async function submitDemoRequest(
   const { error } = await resend.emails.send({
     from: "Foreturn IQ <dominick@foreturniq.com>",
     to: "dominick@foreturniq.com",
-    subject: `Demo request from ${name} — ${courseName}`,
+    subject: `Demo request from ${name} at ${courseName}`,
     html: `
       <h2>New Demo Request</h2>
       <table>
         <tr><td><strong>Name</strong></td><td>${name}</td></tr>
         <tr><td><strong>Course / Club</strong></td><td>${courseName}</td></tr>
         <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
-        <tr><td><strong>Phone</strong></td><td>${phone || "—"}</td></tr>
+        <tr><td><strong>Phone</strong></td><td>${phone || "Not provided"}</td></tr>
       </table>
     `,
   });
