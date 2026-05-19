@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://foreturniq.com"),
   title: {
-    default: "Foreturn IQ - Golf Course Food & Beverage Pre-Ordering Platform",
+    default: "Foreturn IQ - Golf Course F&B Pre-Ordering for General Managers & F&B Directors",
     template: "%s | Foreturn IQ",
   },
   description:
-    "Let golfers pre-order food and drinks before their round from their own phone. Your kitchen gets a timed order queue. More F&B revenue, no new hardware, no staff retraining.",
+    "The pre-ordering platform built for golf course GMs, assistant managers, and F&B directors. Let golfers order food and drinks before their round. Your kitchen gets a timed queue. No hardware, no retraining.",
   alternates: {
     canonical: "/",
   },
@@ -27,16 +28,16 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://foreturniq.com",
     siteName: "Foreturn IQ",
-    title: "Foreturn IQ - Golf Course Food & Beverage Pre-Ordering Platform",
+    title: "Foreturn IQ - Golf Course F&B Pre-Ordering for General Managers & F&B Directors",
     description:
-      "Let golfers pre-order food and drinks before their round from their own phone. More F&B revenue, no new hardware, no staff retraining.",
+      "The pre-ordering platform built for golf course GMs, assistant managers, and F&B directors. More F&B revenue, no new hardware, no staff retraining.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Foreturn IQ" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foreturn IQ - Golf Course F&B Pre-Ordering",
+    title: "Foreturn IQ - Golf Course F&B Pre-Ordering for GMs & F&B Directors",
     description:
-      "Let golfers pre-order food and drinks before their round. More revenue, no hardware, no retraining.",
+      "Built for golf course general managers and F&B directors. More revenue per round, no hardware, no retraining.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -56,6 +57,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
     </html>
   );
 }

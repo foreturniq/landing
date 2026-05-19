@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useActionState } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 import { submitDemoRequest, FormState } from "../actions";
 
 const inputClass =
@@ -16,6 +17,12 @@ export default function DemoForm() {
     null
   );
   const [courseName, setCourseName] = useState("");
+
+  useEffect(() => {
+    if (state?.success) {
+      sendGAEvent("event", "generate_lead", { form_name: "demo_request" });
+    }
+  }, [state?.success]);
 
   if (state?.success) {
     return (
