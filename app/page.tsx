@@ -20,12 +20,12 @@ const benefits = [
   {
     Icon: CurrencyDollarSimpleIcon,
     title: "Higher spend before they arrive",
-    body: "Golfers pre-order from home, the parking lot, or the pro shop, before their round starts. Without a line or a tee time counting down, they browse more and add more. Pre-orders consistently outpace counter transactions on average ticket.",
+    body: "Golfers pre-order food and drinks from home, the parking lot, or the pro shop before their round starts. Without a line or a tee time counting down, they browse more and spend more. Mobile pre-orders consistently outpace counter transactions on average ticket.",
   },
   {
     Icon: TrendUpIcon,
     title: "Higher ticket, no upselling required",
-    body: "Browsing a menu from the cart seat, without time pressure, golfers add more. Counter transactions compete with their tee time. The app doesn't.",
+    body: "Browsing a food and beverage menu from the cart seat, without time pressure, golfers add more. Counter transactions compete with their tee time. A pre-order screen doesn't.",
   },
   {
     Icon: TimerIcon,
@@ -35,7 +35,7 @@ const benefits = [
   {
     Icon: WrenchIcon,
     title: "Live in one afternoon",
-    body: "Print a QR code for the cart. Build your menu in the admin panel. Payments settle directly to your Stripe account. No hardware, no training, no dev work.",
+    body: "Print a QR code for the golf cart. Build your food and beverage menu in the admin panel. Payments settle directly to your Stripe account. No hardware, no training, no dev work.",
   },
 ];
 
@@ -67,7 +67,7 @@ const platformFeatures = [
   {
     tag: "Setup",
     name: "Menu builder",
-    body: "Create items with a name, price, category, and which ordering windows they're available in. Activate and deactivate from the admin panel any time. No code, no support ticket.",
+    body: "Create food and beverage items with a name, price, category, and which ordering windows they're available in. Activate and deactivate from the admin panel any time. No code, no support ticket.",
     Mockup: MenuBuilderMockup,
   },
   {
@@ -87,7 +87,7 @@ const steps = [
   {
     number: "02",
     title: "Golfers scan and pay",
-    body: "A QR code on the cart links to the ordering page. They choose items, select Before Round, At Turn, or After Round, and pay with a card.",
+    body: "A QR code on the golf cart links to the pre-order page. They choose items, select Before Round, At Turn, or After Round, and pay with a card.",
   },
   {
     number: "03",
@@ -106,9 +106,53 @@ const bentoSpans = [
   "lg:col-span-4",
 ];
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://foreturniq.com/#organization",
+      name: "Foreturn IQ",
+      url: "https://foreturniq.com",
+      logo: "https://foreturniq.com/logo.png",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        url: "https://foreturniq.com/#demo",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://foreturniq.com/#app",
+      name: "Foreturn IQ",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        description: "Pilot program for golf courses",
+      },
+      description:
+        "Golf course food and beverage pre-ordering platform. Golfers order from their phone before their round. Kitchen gets a timed queue. No hardware required.",
+      url: "https://foreturniq.com",
+      publisher: { "@id": "https://foreturniq.com/#organization" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://foreturniq.com/#website",
+      url: "https://foreturniq.com",
+      name: "Foreturn IQ",
+      publisher: { "@id": "https://foreturniq.com/#organization" },
+    },
+  ],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Floating glass pill nav */}
       <nav className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <div className="pointer-events-auto flex items-center justify-between gap-6 px-4 py-2.5 rounded-full bg-white border border-black/8 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)] w-full max-w-xl">
@@ -166,7 +210,7 @@ export default function Home() {
                 className="text-[3.75rem] sm:text-[4.75rem] md:text-[5.5rem] lg:text-[6rem] font-bold tracking-tighter leading-[0.92] text-white mb-7 animate-fade-up"
                 style={{ animationDelay: "60ms" }}
               >
-                More Orders Per Round.<br />Zero New Hardware.
+                More F&amp;B Revenue Per Round.<br />Zero New Hardware.
               </h1>
               <p
                 className="text-lg text-white/55 leading-relaxed max-w-[42ch] mb-10 animate-fade-up"
@@ -212,7 +256,7 @@ export default function Home() {
 
       {/* Social proof strip */}
       <div className="py-3.5 px-6 text-center text-[11px] font-medium text-white/65 tracking-wide bg-[#152654]">
-        Currently piloting with courses across the country. Spots are limited.
+        Currently piloting with golf courses across the country. Spots are limited.
       </div>
 
       {/* Benefits */}
