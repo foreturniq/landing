@@ -130,7 +130,7 @@ export default function GolfCartFoodOrderingPage() {
       </nav>
 
       {/* Hero */}
-      <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
+      <section id="section-hero" className="relative min-h-[100dvh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1920&q=85"
@@ -196,7 +196,7 @@ export default function GolfCartFoodOrderingPage() {
       </div>
 
       {/* Benefits */}
-      <section className="px-8 py-32 max-w-7xl mx-auto">
+      <section id="section-benefits" className="px-8 py-32 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.2fr] gap-12 lg:gap-20">
           <div className="lg:pt-2">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.2em] text-green bg-green/10 border border-green/20 mb-5">
@@ -228,7 +228,7 @@ export default function GolfCartFoodOrderingPage() {
       </section>
 
       {/* How it works */}
-      <section className="bg-[#f7f9fc] px-8 py-32">
+      <section id="section-process" className="bg-[#f7f9fc] px-8 py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 items-start">
           <div className="lg:pt-2">
             <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.2em] text-green bg-green/10 border border-green/20 mb-5">
