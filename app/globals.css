@@ -91,11 +91,30 @@ html {
 
 /* Targeted transitions — never use transition-all */
 @utility transition-btn {
-  transition: opacity 600ms var(--spring), transform 600ms var(--spring);
+  transition: opacity 200ms var(--ease-out), transform 160ms var(--ease-out);
 }
 
 @utility transition-input {
   transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
+}
+
+/* Button arrow icons — hover guarded so touch devices don't flash */
+.btn-arrow-sm {
+  transition: transform 200ms var(--ease-out);
+}
+
+.btn-arrow-lg {
+  transition: transform 200ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .btn-arrow-sm {
+    transform: translateX(2px) translateY(-1px);
+  }
+
+  .group:hover .btn-arrow-lg {
+    transform: translateX(4px) translateY(-1px) scale(1.05);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
