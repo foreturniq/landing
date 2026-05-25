@@ -25,8 +25,8 @@ const benefits = [
   },
   {
     Icon: TrendUpIcon,
-    title: "Higher ticket, no upselling required",
-    body: "Browsing a food and beverage menu from the cart seat, without time pressure, golfers add more. Counter transactions compete with their tee time. A pre-order screen doesn't.",
+    title: "Capture groups that skip the turn",
+    body: "At a busy turn, some groups drive through rather than wait in line. If they've pre-ordered, that revenue is already collected before they arrive. The QR code on the cart is the only thing between a skipped stop and a paid order.",
   },
   {
     Icon: TimerIcon,
@@ -105,6 +105,25 @@ const bentoSpans = [
   "lg:col-span-7",
   "lg:col-span-8",
   "lg:col-span-4",
+];
+
+const faqs = [
+  {
+    q: "What does this cost the course?",
+    a: "A per-order service fee is added at the golfer's checkout — your course keeps the full food and beverage amount via Stripe. There's no hardware to buy and no setup charge. We'll walk through the exact structure on the intro call.",
+  },
+  {
+    q: "Will golfers actually use it?",
+    a: "They scan a QR code from the cart and pay on their own phone. No app to download, no account to create. Groups coming off the back nine or waiting in the pro shop have a few minutes and a reason to order. Adoption friction is near zero.",
+  },
+  {
+    q: "Does it connect to our POS?",
+    a: "No — and that's by design. Foreturn IQ runs independently alongside your existing system. Nothing touches your POS or current workflows. Orders and payments are handled entirely within the platform.",
+  },
+  {
+    q: "What if we can't fulfill an order?",
+    a: "Deactivate any item from the admin panel instantly — no code, no support ticket. If something runs out mid-round, take it off the menu and golfers won't see it in the current ordering window.",
+  },
 ];
 
 const jsonLd = {
@@ -238,7 +257,7 @@ export default function Home() {
                   href="#demo"
                   className="group inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full bg-green text-white font-bold text-base transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
                 >
-                  See How It Works
+                  Request a Pilot
                   <span className="w-9 h-9 rounded-full bg-black/20 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105">
                     <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
                       <path
@@ -264,7 +283,7 @@ export default function Home() {
 
       {/* Social proof strip */}
       <div className="py-3.5 px-6 text-center text-[11px] font-medium text-white/65 tracking-wide bg-[#152654]">
-        Currently piloting with golf courses across the country. Spots are limited.
+        No hardware &nbsp;·&nbsp; No app download for golfers &nbsp;·&nbsp; Direct Stripe payout &nbsp;·&nbsp; Live in one afternoon
       </div>
 
       {/* Benefits */}
@@ -348,6 +367,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Mid-page CTA */}
+      <div className="border-t border-b border-slate-100 px-8 py-10 bg-white">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div>
+            <p className="font-semibold text-navy text-lg tracking-tight">Ready to run a pilot at your course?</p>
+            <p className="text-gray-500 text-sm mt-1">Set up around a few tee times. No commitment until you see results.</p>
+          </div>
+          <a
+            href="#demo"
+            className="group inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full bg-green text-white font-bold text-sm whitespace-nowrap transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
+          >
+            Request a Pilot
+            <span className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
       {/* How it works */}
       <section id="section-process" className="bg-[#f7f9fc] px-8 py-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-24 items-start">
@@ -356,7 +396,7 @@ export default function Home() {
               The Process
             </span>
             <h2 className="text-4xl font-bold tracking-tighter text-navy leading-tight mb-4">
-              Simple by Design
+              Three Steps. Live This Afternoon.
             </h2>
             <p className="text-gray-500 text-sm leading-relaxed max-w-[34ch]">
               No new hardware. No staff retraining. Just more fulfilled orders.
@@ -386,6 +426,30 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ / Objections */}
+      <section className="px-8 py-24 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.2fr] gap-12 lg:gap-20">
+            <div className="lg:pt-2">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-[0.2em] text-green bg-green/10 border border-green/20 mb-5">
+                Common Questions
+              </span>
+              <h2 className="text-4xl font-bold tracking-tighter text-navy leading-tight">
+                Questions Operators Ask Before the Pilot
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+              {faqs.map(({ q, a }) => (
+                <div key={q} className="border-t border-slate-100 pt-6">
+                  <h3 className="font-semibold text-[15px] text-navy mb-2">{q}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
