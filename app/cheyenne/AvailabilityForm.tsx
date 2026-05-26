@@ -4,10 +4,20 @@ import { useState, useActionState } from "react";
 import { submitAvailability, FormState } from "../actions";
 
 const MONTH_NAMES = [
-  "January","February","March","April","May","June",
-  "July","August","September","October","November","December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
-const DAY_ABBRS = ["Su","Mo","Tu","We","Th","Fr","Sa"];
+const DAY_ABBRS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
 function getCalendarDays(year: number, month: number): (Date | null)[] {
   const firstDay = new Date(year, month, 1);
@@ -15,7 +25,8 @@ function getCalendarDays(year: number, month: number): (Date | null)[] {
   const startDow = firstDay.getDay();
   const days: (Date | null)[] = [];
   for (let i = 0; i < startDow; i++) days.push(null);
-  for (let d = 1; d <= lastDay.getDate(); d++) days.push(new Date(year, month, d));
+  for (let d = 1; d <= lastDay.getDate(); d++)
+    days.push(new Date(year, month, d));
   return days;
 }
 
@@ -71,8 +82,8 @@ function MonthCalendar({
                 isSelected
                   ? "bg-green text-white shadow-sm"
                   : isWeekend
-                  ? "text-navy font-semibold hover:bg-green/10"
-                  : "text-gray-600 hover:bg-slate-100",
+                    ? "text-navy font-semibold hover:bg-green/10"
+                    : "text-gray-600 hover:bg-slate-100",
               ].join(" ")}
             >
               {date.getDate()}
@@ -113,7 +124,8 @@ function SuccessState({ name, count }: { name: string; count: number }) {
         Got it, {name.split(" ")[0]}!
       </h3>
       <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto">
-        Your {count} date{count !== 1 ? "s" : ""} have been sent to Dominick. Check your email for a confirmation.
+        Your {count} date{count !== 1 ? "s" : ""} have been sent to Dominick.
+        Check your email for a confirmation.
       </p>
       <p className="text-gray-400 text-sm mt-4">
         Need to change something?{" "}
@@ -139,7 +151,7 @@ export default function AvailabilityForm() {
   const [submittedName, setSubmittedName] = useState("");
   const [state, formAction, pending] = useActionState<FormState, FormData>(
     submitAvailability,
-    null
+    null,
   );
 
   const todayKey = toKey(new Date());
@@ -172,26 +184,32 @@ export default function AvailabilityForm() {
       }}
       className="space-y-6"
     >
-      <input type="hidden" name="dates" value={JSON.stringify([...selected].sort())} />
+      <input
+        type="hidden"
+        name="dates"
+        value={JSON.stringify([...selected].sort())}
+      />
 
       {/* Name + email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className={labelClass}>
-            Your Name <span className="text-red-400 normal-case font-normal">*</span>
+            Your Name{" "}
+            <span className="text-red-400 normal-case font-normal">*</span>
           </label>
           <input
             id="name"
             name="name"
             type="text"
             required
-            placeholder="Niko & Sarah"
+            placeholder="Dominick & Tiffany"
             className={inputClass}
           />
         </div>
         <div>
           <label htmlFor="email" className={labelClass}>
-            Email <span className="text-red-400 normal-case font-normal">*</span>
+            Email{" "}
+            <span className="text-red-400 normal-case font-normal">*</span>
           </label>
           <input
             id="email"
@@ -230,7 +248,8 @@ export default function AvailabilityForm() {
           ))}
         </div>
         <p className="text-[11px] text-gray-400 mt-2">
-          Weekend dates are bold. Click any date to toggle. Click again to deselect.
+          Weekend dates are bold. Click any date to toggle. Click again to
+          deselect.
         </p>
       </div>
 
@@ -238,7 +257,9 @@ export default function AvailabilityForm() {
       <div>
         <label htmlFor="notes" className={labelClass}>
           Notes{" "}
-          <span className="text-gray-400 font-normal normal-case">(optional)</span>
+          <span className="text-gray-400 font-normal normal-case">
+            (optional)
+          </span>
         </label>
         <textarea
           id="notes"
@@ -264,9 +285,24 @@ export default function AvailabilityForm() {
       >
         {pending ? (
           <span className="flex items-center justify-center gap-2">
-            <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            <svg
+              className="animate-spin w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              />
             </svg>
             Sending…
           </span>
