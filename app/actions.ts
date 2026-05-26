@@ -82,28 +82,33 @@ export async function submitAvailability(
   }
 
   if (dates.length === 0) {
-    return { success: false, message: "Please select at least one available date." };
+    return { success: false, message: "Please select at least one weekend." };
   }
 
-  const formatDate = (d: string) => {
-    const date = new Date(d + "T00:00:00");
-    return date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+  // dates are Saturday keys — format each as a Sat–Sun pair
+  const formatWeekend = (satKey: string) => {
+    const sat = new Date(satKey + "T00:00:00");
+    const sun = new Date(satKey + "T00:00:00");
+    sun.setDate(sun.getDate() + 1);
+    const satStr = sat.toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric" });
+    const sunStr = sun.toLocaleDateString("en-US", { weekday: "short", month: "long", day: "numeric" });
+    return `${satStr} – ${sunStr}`;
   };
 
   const byMonth: Record<string, string[]> = {};
-  for (const d of dates) {
-    const month = new Date(d + "T00:00:00").toLocaleDateString("en-US", {
+  for (const satKey of dates) {
+    const month = new Date(satKey + "T00:00:00").toLocaleDateString("en-US", {
       month: "long",
       year: "numeric",
     });
     if (!byMonth[month]) byMonth[month] = [];
-    byMonth[month].push(formatDate(d));
+    byMonth[month].push(formatWeekend(satKey));
   }
 
-  const datesHtml = Object.entries(byMonth)
+  const weekendsHtml = Object.entries(byMonth)
     .map(
-      ([month, days]) =>
-        `<p style="margin:12px 0 4px"><strong>${month}</strong></p><ul style="margin:0;padding-left:20px">${days.map((d) => `<li>${d}</li>`).join("")}</ul>`
+      ([month, weekends]) =>
+        `<p style="margin:12px 0 4px"><strong>${month}</strong></p><ul style="margin:0;padding-left:20px">${weekends.map((w) => `<li>${w}</li>`).join("")}</ul>`
     )
     .join("");
 
@@ -111,7 +116,7 @@ export async function submitAvailability(
     from: "Cheyenne Trip <dominick@foreturniq.com>",
     to: "dominick.delbosque@gmail.com",
     subject: `${name} submitted availability — Cheyenne Mountain`,
-    html: `<h2>${name} is available on ${dates.length} date${dates.length !== 1 ? "s" : ""}:</h2>${datesHtml}${notes ? `<p style="margin-top:16px"><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:16px;color:#666">Reply to: <a href="mailto:${email}">${email}</a></p>`,
+    html: `<h2>${name} is free on ${dates.length} weekend${dates.length !== 1 ? "s" : ""}:</h2>${weekendsHtml}${notes ? `<p style="margin-top:16px"><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:16px;color:#666">Reply to: <a href="mailto:${email}">${email}</a></p>`,
   });
 
   if (error) {
@@ -124,11 +129,11 @@ export async function submitAvailability(
     from: "Cheyenne Trip <dominick@foreturniq.com>",
     to: email,
     subject: "Your availability — Cheyenne Mountain trip",
-    html: `<h2>Got it, ${name.split(" ")[0]}!</h2><p>You submitted ${dates.length} available date${dates.length !== 1 ? "s" : ""}:</p>${datesHtml}${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:24px;color:#888;font-size:13px">Need to update? Submit again at <a href="https://foreturniq.com/cheyenne">foreturniq.com/cheyenne</a>.</p>`,
+    html: `<h2>Got it, ${name.split(" ")[0]}!</h2><p>You submitted ${dates.length} weekend${dates.length !== 1 ? "s" : ""}:</p>${weekendsHtml}${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:24px;color:#888;font-size:13px">Need to update? Submit again at <a href="https://foreturniq.com/cheyenne">foreturniq.com/cheyenne</a>.</p>`,
   });
 
   return {
     success: true,
-    message: `Thanks, ${name.split(" ")[0]}! Your dates have been sent.`,
+    message: `Thanks, ${name.split(" ")[0]}! Your weekends have been sent.`,
   };
 }

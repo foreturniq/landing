@@ -6,14 +6,25 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const included = [
+const itinerary = [
   {
-    label: "Golfers",
-    items: ["1 night at Cheyenne Mountain Resort", "18 holes included with passport"],
+    day: "Day 1",
+    label: "Arrive",
+    items: [
+      "Drive to Colorado Springs",
+      "Check in to Cheyenne Mountain Resort",
+      "Families hit the pool or head to the Zoo",
+      "Dinner together",
+    ],
   },
   {
-    label: "Families",
-    items: ["Resort pool access", "Cheyenne Mountain Zoo nearby", "Colorado Springs to explore"],
+    day: "Day 2",
+    label: "Golf + Head Home",
+    items: [
+      "18 holes (included with passport)",
+      "Families explore or hang at the resort",
+      "Check out, drive home",
+    ],
   },
 ];
 
@@ -30,31 +41,32 @@ export default function CheyennePage() {
           Cheyenne Mountain Trip
         </h1>
         <p className="text-white/50 text-sm">
-          Colorado Springs, CO &nbsp;·&nbsp; Summer 2026 &nbsp;·&nbsp; 4 couples
+          Colorado Springs, CO &nbsp;·&nbsp; Summer 2026 &nbsp;·&nbsp; 4 couples &nbsp;·&nbsp; 2 days
         </p>
       </div>
 
       <div className="max-w-3xl mx-auto px-5 py-10 space-y-8">
-        {/* What's included */}
+        {/* 2-day itinerary */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {included.map(({ label, items }) => (
-            <div
-              key={label}
-              className="p-1.5 rounded-2xl bg-white border border-slate-200/80"
-            >
-              <div className="rounded-[calc(1rem-0.375rem)] bg-white p-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-green mb-3">
-                  {label}
-                </p>
-                <ul className="space-y-2">
-                  {items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-gray-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-green mt-1.5 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+          {itinerary.map(({ day, label, items }) => (
+            <div key={day} className="bg-white rounded-2xl border border-slate-200/80 p-5">
+              <div className="flex items-center gap-2.5 mb-4">
+                <div className="w-8 h-8 rounded-full bg-navy flex items-center justify-center flex-shrink-0">
+                  <span className="text-white text-[10px] font-bold">{day.replace("Day ", "")}</span>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-green">{day}</p>
+                  <p className="text-sm font-semibold text-navy leading-tight">{label}</p>
+                </div>
               </div>
+              <ul className="space-y-2">
+                {items.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-gray-600">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-1.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
@@ -62,12 +74,12 @@ export default function CheyennePage() {
         {/* Instructions */}
         <div className="rounded-2xl bg-white border border-slate-200/80 p-6">
           <h2 className="font-bold text-navy text-lg tracking-tight mb-1">
-            How to use this
+            How this works
           </h2>
           <p className="text-gray-500 text-sm leading-relaxed">
-            Enter your name and email, then click every date that works for you and your family.
-            Select as many as possible so we have options. Once everyone submits, Dominick
-            will find the overlap and lock in the date.
+            Since it&apos;s a 2-day trip, you&apos;re picking full weekends. Select every Sat–Sun that works
+            for your whole family and submit. Select as many as possible — the more options we have,
+            the easier it is to find overlap. Dominick will pick the date once everyone responds.
           </p>
         </div>
 
