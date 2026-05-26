@@ -52,3 +52,83 @@ export async function submitDemoRequest(
     message: "Thanks! We'll be in touch within 24 hours to schedule your demo.",
   };
 }
+
+// ─── Cheyenne Mountain trip scheduler ───────────────────────────────────────
+
+export async function submitAvailability(
+  _prev: FormState,
+  formData: FormData
+): Promise<FormState> {
+  const name = formData.get("name")?.toString().trim();
+  const email = formData.get("email")?.toString().trim();
+  const datesJson = formData.get("dates")?.toString();
+  const notes = formData.get("notes")?.toString().trim();
+
+  if (!name || !email) {
+    return { success: false, message: "Please enter your name and email." };
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return { success: false, message: "Please enter a valid email address." };
+  }
+
+  let dates: string[] = [];
+  try {
+    dates = JSON.parse(datesJson || "[]");
+    if (!Array.isArray(dates)) throw new Error();
+  } catch {
+    return { success: false, message: "Something went wrong. Please try again." };
+  }
+
+  if (dates.length === 0) {
+    return { success: false, message: "Please select at least one available date." };
+  }
+
+  const formatDate = (d: string) => {
+    const date = new Date(d + "T00:00:00");
+    return date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+  };
+
+  const byMonth: Record<string, string[]> = {};
+  for (const d of dates) {
+    const month = new Date(d + "T00:00:00").toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+    });
+    if (!byMonth[month]) byMonth[month] = [];
+    byMonth[month].push(formatDate(d));
+  }
+
+  const datesHtml = Object.entries(byMonth)
+    .map(
+      ([month, days]) =>
+        `<p style="margin:12px 0 4px"><strong>${month}</strong></p><ul style="margin:0;padding-left:20px">${days.map((d) => `<li>${d}</li>`).join("")}</ul>`
+    )
+    .join("");
+
+  const { error } = await resend.emails.send({
+    from: "Cheyenne Trip <dominick@foreturniq.com>",
+    to: "dominick.delbosque@gmail.com",
+    subject: `${name} submitted availability — Cheyenne Mountain`,
+    html: `<h2>${name} is available on ${dates.length} date${dates.length !== 1 ? "s" : ""}:</h2>${datesHtml}${notes ? `<p style="margin-top:16px"><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:16px;color:#666">Reply to: <a href="mailto:${email}">${email}</a></p>`,
+  });
+
+  if (error) {
+    console.error("Resend error (organizer):", error);
+    return { success: false, message: "Something went wrong. Please try again." };
+  }
+
+  // Confirmation to submitter
+  await resend.emails.send({
+    from: "Cheyenne Trip <dominick@foreturniq.com>",
+    to: email,
+    subject: "Your availability — Cheyenne Mountain trip",
+    html: `<h2>Got it, ${name.split(" ")[0]}!</h2><p>You submitted ${dates.length} available date${dates.length !== 1 ? "s" : ""}:</p>${datesHtml}${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ""}<p style="margin-top:24px;color:#888;font-size:13px">Need to update? Submit again at <a href="https://foreturniq.com/cheyenne">foreturniq.com/cheyenne</a>.</p>`,
+  });
+
+  return {
+    success: true,
+    message: `Thanks, ${name.split(" ")[0]}! Your dates have been sent.`,
+  };
+}
