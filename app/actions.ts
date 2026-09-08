@@ -9,6 +9,8 @@ export type FormState = {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const CALENDLY_DEMO_URL = "https://calendly.com/dominick-foreturniq/foreturn-iq-demo";
+
 export async function submitDemoRequest(
   _prev: FormState,
   formData: FormData
@@ -47,9 +49,39 @@ export async function submitDemoRequest(
     return { success: false, message: "Something went wrong. Please try again." };
   }
 
+  // Send the requester a link to book their demo on Calendly
+  const bookingUrl = `${CALENDLY_DEMO_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
+  const { error: bookingError } = await resend.emails.send({
+    from: "Foreturn IQ <dominick@foreturniq.com>",
+    to: email,
+    subject: "Book your Foreturn IQ demo",
+    html: `
+      <div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto;">
+        <h2 style="color:#111;">Thanks, ${name.split(" ")[0]}!</h2>
+        <p style="color:#444; line-height:1.5;">
+          We got your request for ${courseName}. Pick a time that works for you and we'll walk you through Foreturn IQ.
+        </p>
+        <p style="margin: 24px 0;">
+          <a href="${bookingUrl}" style="background:#16a34a; color:#ffffff; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block;">
+            Book Your Demo
+          </a>
+        </p>
+        <p style="color:#888; font-size:13px;">
+          If the button doesn't work, copy this link:<br>
+          <a href="${bookingUrl}">${bookingUrl}</a>
+        </p>
+      </div>
+    `,
+  });
+
+  if (bookingError) {
+    // The lead is already captured internally, so don't fail the form over this.
+    console.error("Resend error (booking email):", bookingError);
+  }
+
   return {
     success: true,
-    message: "Thanks! We'll be in touch within 24 hours to schedule your demo.",
+    message: "Thanks! Check your email for a link to book your demo.",
   };
 }
 

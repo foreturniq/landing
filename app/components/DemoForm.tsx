@@ -62,7 +62,7 @@ export default function DemoForm() {
           <div className="flex items-start gap-3">
             <div className="w-1.5 h-1.5 rounded-full bg-green/60 mt-1.5 flex-shrink-0" />
             <p className="text-white/55 text-sm leading-relaxed">
-              A member of the Foreturn IQ team will reach out within one business day.
+              Check your email — we just sent you a link to book a time that works for you.
             </p>
           </div>
           <div className="flex items-start gap-3">
@@ -186,7 +186,7 @@ export default function DemoForm() {
       </button>
 
       <p className="text-center text-white/30 text-xs">
-        No commitment. We&apos;ll reach out within 24 hours.
+        No commitment. You&apos;ll get a booking link by email.
       </p>
     </form>
   );
