@@ -50,27 +50,59 @@ export async function submitDemoRequest(
   }
 
   // Send the requester a link to book their demo on Calendly
+  const firstName = name.split(" ")[0];
   const bookingUrl = `${CALENDLY_DEMO_URL}?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
   const { error: bookingError } = await resend.emails.send({
     from: "Foreturn IQ <dominick@foreturniq.com>",
     to: email,
-    subject: "Book your Foreturn IQ demo",
+    subject: `Book your Foreturn IQ demo, ${firstName}`,
     html: `
-      <div style="font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 480px; margin: 0 auto;">
-        <h2 style="color:#111;">Thanks, ${name.split(" ")[0]}!</h2>
-        <p style="color:#444; line-height:1.5;">
-          We got your request for ${courseName}. Pick a time that works for you and we'll walk you through Foreturn IQ.
+<div style="background-color:#f4f6f8;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background-color:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e8eaed;">
+    <tr>
+      <td style="padding:36px 40px 4px;text-align:center;">
+        <img src="https://foreturniq.com/logo.png" width="132" alt="Foreturn IQ" style="display:block;margin:0 auto;width:132px;height:auto;border:0;">
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:20px 40px 0;text-align:center;">
+        <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#3AAA35;">Demo Request Confirmed</p>
+        <h1 style="margin:0 0 16px;font-size:23px;line-height:1.35;color:#1B3068;font-weight:700;">Let's find a time, ${firstName}</h1>
+        <p style="margin:0 0 28px;font-size:15px;line-height:1.6;color:#4b5563;">
+          Thanks for your interest in Foreturn IQ for <strong style="color:#1B3068;">${courseName}</strong>. Pick a time below and we'll walk through how pre-ordering works for your course &mdash; menu setup, the kitchen queue, and getting your first tee times live.
         </p>
-        <p style="margin: 24px 0;">
-          <a href="${bookingUrl}" style="background:#16a34a; color:#ffffff; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; display:inline-block;">
-            Book Your Demo
-          </a>
-        </p>
-        <p style="color:#888; font-size:13px;">
-          If the button doesn't work, copy this link:<br>
-          <a href="${bookingUrl}">${bookingUrl}</a>
-        </p>
-      </div>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:0 40px 8px;text-align:center;">
+        <a href="${bookingUrl}" style="display:inline-block;background-color:#3AAA35;color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;padding:14px 34px;border-radius:8px;">
+          Book Your Demo &rarr;
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:28px 40px 32px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #edf0f2;">
+          <tr><td style="padding-top:20px;font-size:14px;color:#4b5563;vertical-align:top;width:18px;">&#9679;</td>
+              <td style="padding-top:20px;font-size:14px;color:#4b5563;line-height:1.5;">Just 30 minutes, over Zoom</td></tr>
+          <tr><td style="padding-top:8px;font-size:14px;color:#4b5563;vertical-align:top;width:18px;">&#9679;</td>
+              <td style="padding-top:8px;font-size:14px;color:#4b5563;line-height:1.5;">We'll walk through your menu and a few real tee times</td></tr>
+          <tr><td style="padding-top:8px;font-size:14px;color:#4b5563;vertical-align:top;width:18px;">&#9679;</td>
+              <td style="padding-top:8px;font-size:14px;color:#4b5563;line-height:1.5;">No commitment required</td></tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:18px 40px;background-color:#f9fafb;text-align:center;border-top:1px solid #edf0f2;">
+        <p style="margin:0 0 6px;font-size:12px;color:#9ca3af;">Button not working? Paste this into your browser:</p>
+        <p style="margin:0;font-size:12px;word-break:break-all;"><a href="${bookingUrl}" style="color:#3AAA35;">${bookingUrl}</a></p>
+      </td>
+    </tr>
+  </table>
+  <p style="max-width:560px;margin:20px auto 0;text-align:center;font-size:12px;color:#9ca3af;">
+    Foreturn IQ &middot; <a href="https://foreturniq.com" style="color:#9ca3af;">foreturniq.com</a>
+  </p>
+</div>
     `,
   });
 
