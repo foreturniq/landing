@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://foreturniq.com/pricing",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: "https://foreturniq.com/foreturn-iq-vs-parparty",
       lastModified: new Date(),
       changeFrequency: "monthly",

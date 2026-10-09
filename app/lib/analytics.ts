@@ -10,6 +10,7 @@ export const CONTENT_GROUPS: Record<string, string> = {
   "/golf-league-pre-orders": "lp_league_preorders",
   "/foreturn-iq-vs-parparty": "vs_parparty",
   "/about": "about",
+  "/pricing": "pricing",
   "/one-pager": "one_pager",
   "/card": "contact_card",
   "/cheyenne": "internal_cheyenne",

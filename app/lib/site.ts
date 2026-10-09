@@ -100,7 +100,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const DEMO_MENU_URL = process.env.NEXT_PUBLIC_DEMO_MENU_URL ?? "";
 
 // Extra footer groups.
-export const COMPANY_LINKS = [{ href: "/about", label: "About" }];
+export const COMPANY_LINKS = [
+  { href: "/pricing", label: "Pricing" },
+  { href: "/about", label: "About" },
+];
 export const COMPARE_LINKS = [
   { href: "/foreturn-iq-vs-parparty", label: "Foreturn IQ vs ParParty" },
 ];

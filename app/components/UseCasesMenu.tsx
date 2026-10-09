@@ -37,7 +37,7 @@ export default function UseCasesMenu() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((o) => !o)}
-        className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-2 rounded-full text-sm font-semibold text-navy whitespace-nowrap hover:bg-slate-100 transition-colors"
+        className="inline-flex items-center gap-1 sm:gap-1.5 px-1.5 sm:px-3 py-2 rounded-full text-sm font-semibold text-navy whitespace-nowrap hover:bg-slate-100 transition-colors"
       >
         Use Cases
         <svg
