@@ -75,7 +75,7 @@ function attributionRows(raw: string | undefined): string {
   );
 }
 
-const CALENDLY_DEMO_URL = "https://calendly.com/dominick-foreturniq/foreturn-iq-demo";
+const CALENDLY_DEMO_URL = "https://calendly.com/foreturniq/foreturn-iq-demo";
 
 export async function submitDemoRequest(
   _prev: FormState,
