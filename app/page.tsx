@@ -5,6 +5,8 @@ import HeroMockup from "./components/HeroMockup";
 import UseCasesMenu from "./components/UseCasesMenu";
 import SectionTracker from "./components/SectionTracker";
 import SiteFooter from "./components/SiteFooter";
+import { FounderCard, PilotStats, Testimonials } from "./components/Proof";
+import { CONTACT, DEMO_MENU_URL, PRICING } from "./lib/site";
 import {
   CurrencyDollarSimpleIcon,
   TrendUpIcon,
@@ -65,7 +67,7 @@ const platformFeatures = [
   {
     tag: "Payments",
     name: "Direct Stripe settlement",
-    body: "Payments go from the golfer's card straight to your course's Stripe account. A service fee is charged to the golfer per order. No third-party wallet, no delayed payouts.",
+    body: "Payments go from the golfer's card straight to your course's Stripe account. Golfers pay a 5% + $0.50 service fee per order; your course keeps 100% of its menu prices, plus tax and tips. No third-party wallet, no delayed payouts.",
     Mockup: PaymentsMockup,
   },
   {
@@ -112,8 +114,9 @@ const bentoSpans = [
 
 const faqs = [
   {
+    id: "pricing",
     q: "What does this cost the course?",
-    a: "A per-order service fee is added at the golfer's checkout — your course keeps the full food and beverage amount via Stripe. There's no hardware to buy and no setup charge. We'll walk through the exact structure on the intro call.",
+    a: "Nothing. Golfers pay a service fee of 5% of their order plus $0.50 at checkout, which is $1.48 on a $19.50 order. Your course keeps 100% of its menu prices, plus tax and tips, paid straight to your Stripe account. No hardware to buy, no setup charge, no subscription.",
   },
   {
     q: "Will golfers actually use it?",
@@ -121,11 +124,11 @@ const faqs = [
   },
   {
     q: "Does it connect to our POS?",
-    a: "No — and that's by design. Foreturn IQ runs independently alongside your existing system. Nothing touches your POS or current workflows. Orders and payments are handled entirely within the platform.",
+    a: "No, and that's by design. Foreturn IQ runs alongside your existing system, so nothing touches your POS or current workflows. Orders and payments are handled entirely within the platform. If you need every order to post into your POS, Foreturn IQ isn't the right fit today.",
   },
   {
     q: "What if we can't fulfill an order?",
-    a: "Deactivate any item from the admin panel instantly — no code, no support ticket. If something runs out mid-round, take it off the menu and golfers won't see it in the current ordering window.",
+    a: "Turn the item off in the admin panel and golfers stop seeing it right away, with no code or support ticket. If a golfer already paid for something you can't make, cancel the order from the order queue: they get a full refund to their card, service fee included.",
   },
 ];
 
@@ -137,12 +140,23 @@ const jsonLd = {
       "@id": "https://foreturniq.com/#organization",
       name: "Foreturn IQ",
       url: "https://foreturniq.com",
+      alternateName: "Foreturniq",
       logo: "https://foreturniq.com/logo.png",
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "sales",
-        url: "https://foreturniq.com/#demo",
-      },
+      email: CONTACT.info,
+      founder: { "@id": "https://foreturniq.com/about#founder" },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: CONTACT.info,
+          url: "https://foreturniq.com/#demo",
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: CONTACT.support,
+        },
+      ],
     },
     {
       "@type": "SoftwareApplication",
@@ -152,7 +166,10 @@ const jsonLd = {
       operatingSystem: "Web",
       offers: {
         "@type": "Offer",
-        description: "Pilot program for golf courses",
+        price: "0",
+        priceCurrency: "USD",
+        description:
+          "No cost to the course. Golfers pay a 5% + $0.50 service fee per order; the course keeps 100% of menu prices.",
       },
       description:
         "Golf course food and beverage pre-ordering platform. Golfers order from their phone before their round. Kitchen gets a timed queue. No hardware required.",
@@ -165,6 +182,15 @@ const jsonLd = {
       url: "https://foreturniq.com",
       name: "Foreturn IQ",
       publisher: { "@id": "https://foreturniq.com/#organization" },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://foreturniq.com/#faq",
+      mainEntity: faqs.map(({ q, a }) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: a },
+      })),
     },
   ],
 };
@@ -179,7 +205,7 @@ export default function Home() {
       />
       {/* Floating glass pill nav */}
       <nav className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <div className="pointer-events-auto flex items-center justify-between gap-6 px-4 py-2.5 rounded-full bg-white border border-black/8 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)] w-full max-w-xl">
+        <div className="pointer-events-auto flex items-center justify-between gap-3 sm:gap-6 px-3 sm:px-4 py-2.5 rounded-full bg-white border border-black/8 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)] w-full max-w-xl">
           <Link href="/">
             <Image
               src="/logo.png"
@@ -193,9 +219,10 @@ export default function Home() {
             <UseCasesMenu />
             <a
               href="#demo"
-              className="group hidden sm:inline-flex items-center gap-1.5 pl-5 pr-1.5 py-1.5 rounded-full bg-green text-white font-semibold text-sm transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
+              className="group inline-flex items-center gap-1.5 pl-4 sm:pl-5 pr-1.5 py-1.5 rounded-full bg-green text-white font-semibold text-sm transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
             >
-              Request Demo
+              <span className="sm:hidden">Demo</span>
+              <span className="hidden sm:inline">Request Demo</span>
               <span className="w-7 h-7 rounded-full bg-black/25 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
                 <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
                   <path
@@ -250,8 +277,8 @@ export default function Home() {
                 style={{ animationDelay: "160ms" }}
               >
                 Golfers order food and beverage before their round starts,
-                from their own phone. No counter, no line, no lost revenue at
-                the turn. Your kitchen gets a timed queue that shows when to
+                from their own phone. No counter line at the turn, no group
+                waiting on the one ahead, no lost revenue. Your kitchen gets a timed queue that shows when to
                 start prep, not just what was ordered. Nothing to install.
                 Nobody to retrain.
               </p>
@@ -276,10 +303,32 @@ export default function Home() {
                     </svg>
                   </span>
                 </a>
-                <p className="text-sm text-white/35">
-                  Limited pilot spots available
-                </p>
+                {DEMO_MENU_URL ? (
+                  <a
+                    href={DEMO_MENU_URL}
+                    data-track="demo_menu_click"
+                    data-cta-location="hero"
+                    className="text-sm font-semibold text-white/80 underline underline-offset-4 hover:text-white"
+                  >
+                    See a live demo menu
+                  </a>
+                ) : (
+                  <a
+                    href="#pricing"
+                    data-track="pricing_click"
+                    data-cta-location="hero"
+                    className="text-sm font-semibold text-white/80 underline underline-offset-4 hover:text-white"
+                  >
+                    How pricing works
+                  </a>
+                )}
               </div>
+              <p
+                className="text-sm text-white/50 mt-6 max-w-[46ch] animate-fade-up"
+                style={{ animationDelay: "200ms" }}
+              >
+                {PRICING.callout} Limited pilot spots available.
+              </p>
             </div>
 
             <HeroMockup />
@@ -292,6 +341,8 @@ export default function Home() {
         No hardware &nbsp;·&nbsp; No app download for golfers &nbsp;·&nbsp; Direct Stripe payout &nbsp;·&nbsp; Live in one afternoon
       </div>
 
+      <PilotStats />
+
       {/* Benefits */}
       <section id="section-benefits" className="px-8 py-32 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_2.2fr] gap-12 lg:gap-20">
@@ -303,8 +354,8 @@ export default function Home() {
               What Changes for Your F&amp;B Operation
             </h2>
             <p className="text-gray-500 mt-4 leading-relaxed text-sm max-w-[34ch]">
-              Four direct effects on the numbers that matter to golf course GMs
-              and F&amp;B managers.
+              Four direct effects on revenue per round, the number owners judge
+              your F&amp;B season on.
             </p>
           </div>
 
@@ -372,6 +423,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
 
       {/* Mid-page CTA */}
       <div className="border-t border-b border-slate-100 px-8 py-10 bg-white">
@@ -449,8 +502,8 @@ export default function Home() {
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-              {faqs.map(({ q, a }) => (
-                <div key={q} className="border-t border-slate-100 pt-6">
+              {faqs.map(({ id, q, a }) => (
+                <div key={q} id={id} className="border-t border-slate-100 pt-6 scroll-mt-28">
                   <h3 className="font-semibold text-[15px] text-navy mb-2">{q}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{a}</p>
                 </div>
@@ -481,6 +534,7 @@ export default function Home() {
               <DemoForm />
             </div>
           </div>
+          <FounderCard />
         </div>
       </section>
 

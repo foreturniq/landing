@@ -265,7 +265,7 @@ export function PaymentsMockup() {
           {[
             ["Subtotal", "$19.50"],
             ["Sales Tax (8%)", "$1.56"],
-            ["Service Fee", "$3.00"],
+            ["Service Fee (5% + $0.50)", "$1.48"],
           ].map(([label, amount]) => (
             <div key={label} className="flex justify-between px-3 py-2">
               <span className="text-[9px] text-zinc-400">{label}</span>
@@ -274,7 +274,7 @@ export function PaymentsMockup() {
           ))}
           <div className="flex justify-between px-3 py-2.5">
             <span className="text-[10px] font-bold text-white">Total</span>
-            <span className="text-[10px] font-bold text-white font-mono">$24.06</span>
+            <span className="text-[10px] font-bold text-white font-mono">$22.54</span>
           </div>
         </div>
         <div className="bg-green/10 border border-green/25 rounded-lg px-3 py-2">

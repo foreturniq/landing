@@ -56,7 +56,7 @@ export default function HeroMockup() {
                 ))}
                 <div className="flex items-center justify-between pt-3 pb-1">
                   <span className="text-[11px] font-medium text-zinc-500">
-                    Total
+                    Subtotal
                   </span>
                   <span className="text-[14px] font-bold text-zinc-900 font-mono">
                     $19.50
@@ -78,6 +78,34 @@ export default function HeroMockup() {
             {/* Home indicator */}
             <div className="bg-white flex justify-center py-2">
               <div className="w-14 h-[3px] rounded-full bg-zinc-300" />
+            </div>
+          </div>
+        </div>
+
+        {/* Kitchen-side ticket: what your staff sees for this order */}
+        <div className="absolute -left-44 bottom-24 w-[188px] rounded-xl bg-zinc-900 border border-orange-500/30 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.7)] p-3">
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-orange-400" />
+            <span className="text-[8px] font-bold uppercase tracking-widest text-orange-400">
+              Kitchen &middot; Prepare Now
+            </span>
+          </div>
+          <div className="flex items-start justify-between mb-2">
+            <span className="text-[16px] font-bold font-mono text-white tracking-widest leading-none">
+              X7K2
+            </span>
+            <span className="text-[8px] bg-green/20 text-green px-1.5 py-0.5 rounded font-semibold">
+              At the Turn
+            </span>
+          </div>
+          <div className="bg-zinc-800 rounded p-1.5 space-y-0.5">
+            <div className="flex justify-between">
+              <span className="text-[8px] text-zinc-500">Predicted Arrival</span>
+              <span className="text-[8px] text-zinc-300 font-mono">11:52 AM</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-[8px] text-zinc-500">Prep Starts</span>
+              <span className="text-[8px] text-zinc-300 font-mono">11:37 AM</span>
             </div>
           </div>
         </div>

@@ -1,0 +1,28 @@
+# Foreturn IQ
+
+> Food and beverage pre-ordering for golf courses. Golfers scan a QR code on the cart and order from their own phone, no app or account. The kitchen gets a timed queue that shows when to start prep. No hardware, no POS integration needed.
+
+Built for golf course general managers, assistant managers and F&B directors.
+
+## How it works
+- Golfers choose a pickup window: Before Round, At the Turn or After Round.
+- Orders land in a kitchen queue bucketed Prepare Now, Coming Up, Later Today, with each golfer's predicted arrival and a prep start 15 minutes before it.
+- Every order gets a 4-character pickup code.
+- Payments settle directly to the course's own Stripe account.
+
+## Pricing
+- Free for the course: no hardware, no setup charge, no subscription.
+- Golfers pay a service fee of 5% of their order plus $0.50 (e.g. $1.48 on a $19.50 order).
+- The course keeps 100% of its menu prices, plus tax and tips.
+
+## Pages
+- [Home](https://foreturniq.com/): product overview and FAQ
+- [Golf Cart Food Ordering](https://foreturniq.com/golf-cart-food-ordering): QR ordering that reaches the kitchen instead of an unwatched GPS screen
+- [Golf League Pre-Orders](https://foreturniq.com/golf-league-pre-orders): replacing the paper league-night order sheet
+- [Foreturn IQ vs ParParty](https://foreturniq.com/foreturn-iq-vs-parparty): side-by-side comparison
+- [About](https://foreturniq.com/about): founder and contact
+
+## Contact
+- General: info@foreturniq.com
+- Support: support@foreturniq.com
+- Founder: Dominick Del Bosque, dominick@foreturniq.com
