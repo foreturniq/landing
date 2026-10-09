@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import AnalyticsProvider from "./components/AnalyticsProvider";
+import { CONTENT_GROUPS } from "./lib/analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -46,6 +48,21 @@ export const metadata: Metadata = {
   },
 };
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const GA_DEBUG = process.env.NODE_ENV !== "production";
+
+// Inline init so content_group is set before the first page_view fires.
+const gaInit = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  var groups = ${JSON.stringify(CONTENT_GROUPS)};
+  var path = location.pathname.replace(/\\/+$/, '') || '/';
+  gtag('set', { content_group: groups[path] || 'other' });
+  gtag('config', '${GA_ID}'${GA_DEBUG ? ", { debug_mode: true }" : ""});
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -56,8 +73,22 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!} />
+      <body className="min-h-full flex flex-col">
+        {children}
+        <AnalyticsProvider />
+      </body>
+      {GA_ID && (
+        <>
+          <Script id="ga-init" strategy="afterInteractive">
+            {gaInit}
+          </Script>
+          <Script
+            id="ga-lib"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
+          />
+        </>
+      )}
     </html>
   );
 }

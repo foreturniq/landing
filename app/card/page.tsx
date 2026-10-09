@@ -31,6 +31,8 @@ export default function CardPage() {
       <p style={{ margin: 0, fontSize: '0.875rem', opacity: 0.7 }}>Founder, Foreturn IQ</p>
       <a
         href="/dominick.vcf"
+        data-track="contact_card_save"
+        data-cta-location="card"
         style={{
           marginTop: '0.5rem',
           padding: '0.7rem 1.5rem',

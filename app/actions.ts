@@ -9,6 +9,72 @@ export type FormState = {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const escapeHtml = (v: string) =>
+  v.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!
+  );
+
+type Touch = {
+  params?: Record<string, unknown>;
+  landing_page?: unknown;
+  referrer?: unknown;
+  ts?: unknown;
+};
+
+// Parses the client-sent attribution JSON defensively (it is user-controlled)
+// and renders it as rows for the internal lead email. Keep the gclid: it is
+// what you upload to Google Ads later as an offline conversion when this
+// lead becomes a signed course.
+function attributionRows(raw: string | undefined): string {
+  if (!raw || raw.length > 5000) return "";
+  let parsed: { first_touch?: Touch | null; last_touch?: Touch | null };
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return "";
+  }
+
+  const str = (v: unknown) => (typeof v === "string" ? v.slice(0, 300) : "");
+  const row = (label: string, value: string) =>
+    value
+      ? `<tr><td><strong>${label}</strong></td><td>${escapeHtml(value)}</td></tr>`
+      : "";
+
+  const renderTouch = (label: string, t: Touch | null | undefined) => {
+    if (!t || typeof t !== "object") return "";
+    const p = (t.params && typeof t.params === "object" ? t.params : {}) as Record<string, unknown>;
+    const when = typeof t.ts === "number" ? new Date(t.ts).toISOString() : "";
+    const source = str(p.utm_source)
+      ? `${str(p.utm_source)} / ${str(p.utm_medium) || "none"}`
+      : str(p.gclid) || str(p.gbraid) || str(p.wbraid)
+        ? "google / cpc"
+        : str(t.referrer)
+          ? "referral"
+          : "direct";
+    return [
+      `<tr><td colspan="2" style="padding-top:12px"><strong>${label}</strong></td></tr>`,
+      row("Source / Medium", source),
+      row("Campaign", str(p.utm_campaign)),
+      row("Term", str(p.utm_term)),
+      row("Content", str(p.utm_content)),
+      row("Landing page", str(t.landing_page)),
+      row("Referrer", str(t.referrer)),
+      row("gclid", str(p.gclid)),
+      row("gbraid", str(p.gbraid)),
+      row("wbraid", str(p.wbraid)),
+      row("fbclid", str(p.fbclid)),
+      row("msclkid", str(p.msclkid)),
+      row("li_fat_id", str(p.li_fat_id)),
+      row("First seen", when),
+    ].join("");
+  };
+
+  return (
+    renderTouch("First touch", parsed?.first_touch) +
+    renderTouch("Last touch", parsed?.last_touch)
+  );
+}
+
 const CALENDLY_DEMO_URL = "https://calendly.com/dominick-foreturniq/foreturn-iq-demo";
 
 export async function submitDemoRequest(
@@ -19,6 +85,7 @@ export async function submitDemoRequest(
   const courseName = formData.get("courseName")?.toString().trim();
   const email = formData.get("email")?.toString().trim();
   const phone = formData.get("phone")?.toString().trim();
+  const attribution = attributionRows(formData.get("attribution")?.toString());
 
   if (!name || !courseName || !email) {
     return { success: false, message: "Please fill in all required fields." };
@@ -40,6 +107,7 @@ export async function submitDemoRequest(
         <tr><td><strong>Course / Club</strong></td><td>${courseName}</td></tr>
         <tr><td><strong>Email</strong></td><td><a href="mailto:${email}">${email}</a></td></tr>
         <tr><td><strong>Phone</strong></td><td>${phone || "Not provided"}</td></tr>
+        ${attribution}
       </table>
     `,
   });

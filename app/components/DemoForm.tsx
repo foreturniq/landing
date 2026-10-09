@@ -1,8 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useActionState } from "react";
 import { submitDemoRequest, FormState } from "../actions";
+import {
+  LEAD_VALUE_USD,
+  contentGroupFor,
+  getAttribution,
+  setUserData,
+  sourceLabel,
+  track,
+} from "../lib/analytics";
+
+const FORM_NAME = "demo_request";
 
 const inputClass =
   "w-full px-4 py-3 rounded-lg bg-white/8 border border-white/15 text-white text-sm placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-green/40 focus:border-green/50 transition-input";
@@ -11,17 +21,58 @@ const labelClass =
   "block text-[11px] font-semibold text-white/50 mb-2 uppercase tracking-[0.14em]";
 
 export default function DemoForm() {
+  const contactRef = useRef<{ email: string; phone: string }>({ email: "", phone: "" });
+  const formStarted = useRef(false);
+
+  // Wrap the server action so first/last touch attribution (UTMs, gclid)
+  // travels with every submission, and keep email/phone for enhanced
+  // conversions on success.
   const [state, formAction, pending] = useActionState<FormState, FormData>(
-    submitDemoRequest,
+    async (prev, formData) => {
+      formData.set("attribution", JSON.stringify(getAttribution()));
+      contactRef.current = {
+        email: formData.get("email")?.toString() ?? "",
+        phone: formData.get("phone")?.toString() ?? "",
+      };
+      return submitDemoRequest(prev, formData);
+    },
     null
   );
   const [courseName, setCourseName] = useState("");
 
   useEffect(() => {
-    if (state?.success && typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "generate_lead", { form_name: "demo_request" });
+    if (!state) return;
+    const path = window.location.pathname;
+
+    if (state.success) {
+      const { email, phone } = contactRef.current;
+      if (email) setUserData(email, phone);
+
+      const { last_touch } = getAttribution();
+      track("generate_lead", {
+        form_name: FORM_NAME,
+        value: LEAD_VALUE_USD,
+        currency: "USD",
+        lead_source_page: path,
+        lead_content_group: contentGroupFor(path),
+        lead_traffic_source: sourceLabel(last_touch),
+      });
+    } else {
+      track("form_error", {
+        form_name: FORM_NAME,
+        error_message: state.message.slice(0, 100),
+      });
     }
-  }, [state?.success]);
+  }, [state]);
+
+  const handleFocus = () => {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    track("form_start", {
+      form_name: FORM_NAME,
+      lead_source_page: window.location.pathname,
+    });
+  };
 
   if (state?.success) {
     return (
@@ -83,7 +134,11 @@ export default function DemoForm() {
   }
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form
+      action={formAction}
+      onFocus={handleFocus}
+      className="space-y-4"
+    >
       {state && !state.success && (
         <div className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3">
           <p className="text-red-300 text-sm">{state.message}</p>
