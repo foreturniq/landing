@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import DemoForm from "./components/DemoForm";
 import HeroMockup from "./components/HeroMockup";
+import UseCasesMenu from "./components/UseCasesMenu";
 import SectionTracker from "./components/SectionTracker";
+import SiteFooter from "./components/SiteFooter";
 import {
   CurrencyDollarSimpleIcon,
   TrendUpIcon,
@@ -177,7 +180,7 @@ export default function Home() {
       {/* Floating glass pill nav */}
       <nav className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
         <div className="pointer-events-auto flex items-center justify-between gap-6 px-4 py-2.5 rounded-full bg-white border border-black/8 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.9)] w-full max-w-xl">
-          <div>
+          <Link href="/">
             <Image
               src="/logo.png"
               alt="Foreturn IQ"
@@ -185,24 +188,27 @@ export default function Home() {
               height={32}
               priority
             />
+          </Link>
+          <div className="flex items-center gap-1.5">
+            <UseCasesMenu />
+            <a
+              href="#demo"
+              className="group hidden sm:inline-flex items-center gap-1.5 pl-5 pr-1.5 py-1.5 rounded-full bg-green text-white font-semibold text-sm transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
+            >
+              Request Demo
+              <span className="w-7 h-7 rounded-full bg-black/25 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+                <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
+                  <path
+                    d="M2 6h8M6.5 2.5L10 6l-3.5 3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
           </div>
-          <a
-            href="#demo"
-            className="group hidden sm:inline-flex items-center gap-1.5 pl-5 pr-1.5 py-1.5 rounded-full bg-green text-white font-semibold text-sm transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
-          >
-            Request Demo
-            <span className="w-7 h-7 rounded-full bg-black/25 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
-              <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
-                <path
-                  d="M2 6h8M6.5 2.5L10 6l-3.5 3.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </a>
         </div>
       </nav>
 
@@ -478,19 +484,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="px-8 py-8 border-t border-white/8 bg-navy flex flex-wrap items-center justify-between gap-4">
-        <Image
-          src="/logo.png"
-          alt="Foreturn IQ"
-          width={100}
-          height={34}
-          className="opacity-35"
-        />
-        <p className="text-xs text-white/25">
-          &copy; {new Date().getFullYear()} Foreturn IQ. All rights reserved.
-        </p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
