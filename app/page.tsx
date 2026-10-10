@@ -31,7 +31,7 @@ const benefits = [
   {
     Icon: TrendUpIcon,
     title: "Capture groups that skip the turn",
-    body: "At a busy turn, some groups drive through rather than wait in line. If they've pre-ordered, that revenue is already collected before they arrive. The QR code on the cart is the only thing between a skipped stop and a paid order.",
+    body: "At a busy turn, some groups drive through rather than wait in line and slow pace of play. If they've pre-ordered, that revenue is already collected before they arrive. The QR code on the cart is the only thing between a skipped stop and a paid order.",
   },
   {
     Icon: TimerIcon,
@@ -79,7 +79,7 @@ const platformFeatures = [
   {
     tag: "Retention",
     name: "Golfer quick reorder",
-    body: "Returning golfers see their previous order pre-populated when they scan. One tap to reorder. Reduces ordering friction and increases repeat conversion at the cart.",
+    body: "Returning golfers see their previous order pre-populated when they scan. One tap to reorder. Your regulars notice their usual is already waiting for them.",
     Mockup: QuickReorderMockup,
   },
 ];
@@ -275,15 +275,16 @@ export default function Home() {
                 className="text-sm text-white/50 font-medium mb-4 animate-fade-up"
                 style={{ animationDelay: "100ms" }}
               >
-                For general managers, assistant managers, and F&amp;B directors.
+                For general managers, assistant managers, and F&amp;B directors
+                whose season is judged on F&amp;B revenue per round.
               </p>
               <p
                 className="text-lg text-white/55 leading-relaxed max-w-[42ch] mb-10 animate-fade-up"
                 style={{ animationDelay: "160ms" }}
               >
                 Golfers order food and beverage before their round starts,
-                from their own phone. No counter line at the turn, no group
-                waiting on the one ahead, no lost revenue. Your kitchen gets a timed queue that shows when to
+                from their own phone. No counter line at the turn, no hit to
+                pace of play, no lost revenue. Your kitchen gets a timed queue that shows when to
                 start prep, not just what was ordered. Nothing to install.
                 Nobody to retrain.
               </p>
