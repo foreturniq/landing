@@ -102,6 +102,24 @@ export function MentionsStrip() {
   );
 }
 
+// Secondary paths for visitors not ready to talk yet (dark background).
+export function NotReadyLinks() {
+  const link = "text-white/80 underline underline-offset-4 hover:text-white";
+  return (
+    <p className="mt-6 text-center text-sm text-white/45">
+      Not ready to talk yet?{" "}
+      <Link href="/pricing" className={link} data-track="pricing_click" data-cta-location="demo_section">
+        See pricing
+      </Link>{" "}
+      or{" "}
+      <Link href="/foreturn-iq-vs-parparty" className={link} data-track="compare_click" data-cta-location="demo_section">
+        compare us to ParParty
+      </Link>
+      .
+    </p>
+  );
+}
+
 // One-line founder card for the demo section (dark background).
 export function FounderCard() {
   return (

@@ -7,7 +7,7 @@ import SectionTracker from "../components/SectionTracker";
 import Breadcrumbs from "../components/Breadcrumbs";
 import RelatedLinks from "../components/RelatedLinks";
 import SiteFooter from "../components/SiteFooter";
-import { FounderCard } from "../components/Proof";
+import { FounderCard, NotReadyLinks } from "../components/Proof";
 import { breadcrumbJsonLd } from "../lib/site";
 
 export const metadata: Metadata = {
@@ -130,8 +130,8 @@ export default function GolfCartFoodOrderingPage() {
               href="#demo"
               className="group inline-flex items-center gap-1.5 px-3.5 py-2 sm:pl-5 sm:pr-1.5 sm:py-1.5 rounded-full bg-green text-white font-semibold text-sm [transition:opacity_200ms_cubic-bezier(0.23,1,0.32,1),transform_160ms_cubic-bezier(0.23,1,0.32,1)] hover:opacity-90 active:scale-[0.97]"
             >
-              <span className="sm:hidden">Demo</span>
-              <span className="hidden sm:inline">Request Demo</span>
+              <span className="sm:hidden">Pilot</span>
+              <span className="hidden sm:inline">Request a Pilot</span>
               <span className="w-7 h-7 rounded-full bg-black/25 hidden sm:flex items-center justify-center btn-arrow-sm">
                 <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
                   <path
@@ -304,6 +304,7 @@ export default function GolfCartFoodOrderingPage() {
               <DemoForm />
             </div>
           </div>
+          <NotReadyLinks />
           <FounderCard />
         </div>
       </section>

@@ -1,5 +1,5 @@
 import DemoForm from "./DemoForm";
-import { FounderCard } from "./Proof";
+import { FounderCard, NotReadyLinks } from "./Proof";
 
 // Demo request block reused on secondary pages.
 export default function DemoSection({
@@ -26,6 +26,7 @@ export default function DemoSection({
             <DemoForm />
           </div>
         </div>
+        <NotReadyLinks />
         <FounderCard />
       </div>
     </section>

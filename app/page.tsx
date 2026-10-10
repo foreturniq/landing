@@ -5,7 +5,7 @@ import HeroMockup from "./components/HeroMockup";
 import UseCasesMenu from "./components/UseCasesMenu";
 import SectionTracker from "./components/SectionTracker";
 import SiteFooter from "./components/SiteFooter";
-import { FounderCard, PilotStats, Testimonials } from "./components/Proof";
+import { FounderCard, NotReadyLinks, PilotStats, Testimonials } from "./components/Proof";
 import { CONTACT, DEMO_MENU_URL, PRICING } from "./lib/site";
 import {
   CurrencyDollarSimpleIcon,
@@ -104,12 +104,12 @@ const steps = [
 
 // Literal class strings required for Tailwind scanning
 const bentoSpans = [
-  "lg:col-span-7",
-  "lg:col-span-5",
-  "lg:col-span-5",
-  "lg:col-span-7",
-  "lg:col-span-8",
+  "lg:col-span-8", // Real-time order queue: the thing operators are buying
   "lg:col-span-4",
+  "lg:col-span-5",
+  "lg:col-span-7",
+  "lg:col-span-6",
+  "lg:col-span-6",
 ];
 
 const faqs = [
@@ -226,8 +226,8 @@ export default function Home() {
               href="#demo"
               className="group inline-flex items-center gap-1.5 px-3.5 py-2 sm:pl-5 sm:pr-1.5 sm:py-1.5 rounded-full bg-green text-white font-semibold text-sm transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
             >
-              <span className="sm:hidden">Demo</span>
-              <span className="hidden sm:inline">Request Demo</span>
+              <span className="sm:hidden">Pilot</span>
+              <span className="hidden sm:inline">Request a Pilot</span>
               <span className="w-7 h-7 rounded-full bg-black/25 hidden sm:flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
                 <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
                   <path
@@ -438,17 +438,27 @@ export default function Home() {
             <p className="font-semibold text-navy text-lg tracking-tight">Ready to run a pilot at your course?</p>
             <p className="text-gray-500 text-sm mt-1">Set up around a few tee times. No commitment until you see results.</p>
           </div>
-          <a
-            href="#demo"
-            className="group inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full bg-green text-white font-bold text-sm whitespace-nowrap transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
-          >
-            Request a Pilot
-            <span className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
-              <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </span>
-          </a>
+          <div className="flex flex-wrap items-center gap-5">
+            <a
+              href="#demo"
+              className="group inline-flex items-center gap-3 pl-7 pr-2 py-2 rounded-full bg-green text-white font-bold text-sm whitespace-nowrap transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:opacity-90 active:scale-[0.97]"
+            >
+              Request a Pilot
+              <span className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </a>
+            <Link
+              href={DEMO_MENU_URL || "/pricing"}
+              data-track={DEMO_MENU_URL ? "demo_menu_click" : "pricing_click"}
+              data-cta-location="mid_page"
+              className="text-sm font-semibold text-navy underline underline-offset-4 hover:text-green"
+            >
+              {DEMO_MENU_URL ? "See a live demo menu" : "Or see what it costs first"}
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -490,6 +500,31 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fit check: who this is for, and who it is not for */}
+      <section id="section-fit" className="px-8 py-20 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-[1.5rem] bg-green/8 border border-green/25 p-6">
+            <h2 className="text-xl font-bold tracking-tight text-navy mb-3">
+              A good fit if
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-600 leading-relaxed list-disc pl-5">
+              <li>Golfers pick up food at a counter, snack bar or turn window.</li>
+              <li>You want the course to pay nothing per order.</li>
+              <li>Your kitchen needs to know when to start prep, not just what was ordered.</li>
+            </ul>
+          </div>
+          <div className="rounded-[1.5rem] bg-slate-50 border border-slate-200 p-6">
+            <h2 className="text-xl font-bold tracking-tight text-navy mb-3">
+              Not the right fit if
+            </h2>
+            <ul className="space-y-2 text-sm text-gray-600 leading-relaxed list-disc pl-5">
+              <li>You need every order to post into your POS.</li>
+              <li>You run staff delivery to the cart or the hole. Foreturn IQ is built for pickup.</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -539,6 +574,7 @@ export default function Home() {
               <DemoForm />
             </div>
           </div>
+          <NotReadyLinks />
           <FounderCard />
         </div>
       </section>
