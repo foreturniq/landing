@@ -112,8 +112,8 @@ export function NotReadyLinks() {
         See pricing
       </Link>{" "}
       or{" "}
-      <Link href="/foreturn-iq-vs-parparty" className={link} data-track="compare_click" data-cta-location="demo_section">
-        compare us to ParParty
+      <Link href="/phone-orders-vs-pre-orders" className={link} data-track="compare_click" data-cta-location="demo_section">
+        compare pre-orders to phone orders
       </Link>
       .
     </p>

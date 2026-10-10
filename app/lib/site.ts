@@ -105,7 +105,7 @@ export const COMPANY_LINKS = [
   { href: "/about", label: "About" },
 ];
 export const COMPARE_LINKS = [
-  { href: "/foreturn-iq-vs-parparty", label: "Foreturn IQ vs ParParty" },
+  { href: "/phone-orders-vs-pre-orders", label: "Phone Orders vs Pre-Orders" },
 ];
 
 // ─── Social cards ───────────────────────────────────────────────────────────

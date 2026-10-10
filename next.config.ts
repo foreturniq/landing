@@ -30,6 +30,15 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/foreturn-iq-vs-parparty",
+        destination: "/phone-orders-vs-pre-orders",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
