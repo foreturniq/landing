@@ -4,7 +4,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import DemoSection from "../components/DemoSection";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
-import { FOUNDER, PRICING, SITE_URL, breadcrumbJsonLd } from "../lib/site";
+import { FOUNDER, PRICING, SITE_URL, breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 export const metadata: Metadata = {
   title: "About the Founder",
@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     title: "About Foreturn IQ and Its Founder",
     description:
       "Who builds Foreturn IQ, how it makes money, and how to reach the founder directly.",
+    images: OG_IMAGES,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Foreturn IQ and Its Founder",
+    description:
+      "Who builds Foreturn IQ, how it makes money, and how to reach the founder directly.",
+    images: TWITTER_IMAGES,
   },
 };
 

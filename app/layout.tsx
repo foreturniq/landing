@@ -33,14 +33,12 @@ export const metadata: Metadata = {
     title: "Golf Course F&B Pre-Ordering for GMs | Foreturn IQ",
     description:
       "The pre-ordering platform built for golf course GMs, assistant managers, and F&B directors. More F&B revenue, no new hardware, no staff retraining.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Foreturn IQ" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Foreturn IQ - Golf Course F&B Pre-Ordering for GMs & F&B Directors",
     description:
       "Built for golf course general managers and F&B directors. More revenue per round, no hardware, no retraining.",
-    images: ["/og-image.png"],
   },
   robots: {
     index: true,

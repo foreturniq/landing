@@ -8,10 +8,10 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import RelatedLinks from "../components/RelatedLinks";
 import SiteFooter from "../components/SiteFooter";
 import { FounderCard, NotReadyLinks } from "../components/Proof";
-import { breadcrumbJsonLd } from "../lib/site";
+import { breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Golf Cart Food Ordering System That Staff Actually See",
+  title: "Golf Cart Food Ordering Staff Actually See",
   description:
     "Most golf cart GPS ordering systems fire orders to a screen nobody's watching. Foreturn IQ sends every order directly to your kitchen dashboard. No missed tickets, no dead GPS screens.",
   alternates: { canonical: "/golf-cart-food-ordering" },
@@ -19,17 +19,17 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://foreturniq.com/golf-cart-food-ordering",
     siteName: "Foreturn IQ",
-    title: "Golf Cart Food Ordering System That Staff Actually See",
+    title: "Golf Cart Food Ordering Staff Actually See",
     description:
       "Most golf cart GPS ordering systems fire orders to a screen nobody's watching. Foreturn IQ sends every order directly to your kitchen dashboard.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Foreturn IQ" }],
+    images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golf Cart Food Ordering System That Staff Actually See",
+    title: "Golf Cart Food Ordering Staff Actually See",
     description:
       "GPS cart screens fire orders your staff never sees. Foreturn IQ routes every ticket straight to the kitchen dashboard.",
-    images: ["/og-image.png"],
+    images: TWITTER_IMAGES,
   },
 };
 

@@ -4,7 +4,7 @@ import DemoSection from "../components/DemoSection";
 import { MonthlyEstimate, OrderBreakdown } from "../components/PricingCalculator";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
-import { SITE_URL, breadcrumbJsonLd, serviceFeeCents } from "../lib/site";
+import { SITE_URL, breadcrumbJsonLd, serviceFeeCents, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 const PATH = "/pricing";
 
@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     title: "Foreturn IQ Pricing: Free for the Course",
     description:
       "Golfers pay a 5% + $0.50 service fee per order. Your course keeps 100% of its menu prices.",
+    images: OG_IMAGES,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Foreturn IQ Pricing: Free for the Course",
+    description:
+      "Golfers pay a 5% + $0.50 service fee per order. Your course keeps 100% of its menu prices.",
+    images: TWITTER_IMAGES,
   },
 };
 
