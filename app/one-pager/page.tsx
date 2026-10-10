@@ -86,8 +86,10 @@ export default function OnePager() {
           <Image
             src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1600&q=85"
             alt="Golf course"
-            fill
-            className="object-cover object-center scale-105"
+            width={1600}
+            height={1067}
+            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover object-center scale-105"
             priority
           />
           <div className="absolute inset-0 bg-[#1B3068]/80" />

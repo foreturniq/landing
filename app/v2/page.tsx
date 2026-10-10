@@ -135,8 +135,10 @@ export default function V2Page() {
           <Image
             src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=85"
             alt="Golf course fairway with lush green grass, trees, and open sky"
-            fill
-            className="object-cover object-center scale-105 blur-[3px]"
+            width={1920}
+            height={1280}
+            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover object-center scale-105 blur-[3px]"
             priority
           />
           <div className="absolute inset-0 bg-navy/80" />
