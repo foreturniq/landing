@@ -39,6 +39,26 @@ export function breadcrumbJsonLd(href: string, label: string) {
   };
 }
 
+// ─── Content dates ──────────────────────────────────────────────────────────
+// Published / last-updated dates for article-style pages, shown on the page
+// and emitted as datePublished / dateModified. Sweep these pages every six
+// months: refresh numbers, prices and claims, then bump `modified`. Only bump
+// `modified` for a real content edit, never for a metadata or styling change.
+export type PageDates = { published: string; modified: string }; // YYYY-MM-DD
+
+export const PAGE_DATES: Record<string, PageDates> = {
+  "/phone-orders-vs-pre-orders": { published: "2026-10-10", modified: "2026-10-10" },
+};
+
+export function formatPageDate(iso: string) {
+  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 // ─── Pricing ────────────────────────────────────────────────────────────────
 // Mirrors backend/internal/service/fee.go (5% of subtotal + $0.50, uncapped).
 // The course keeps 100% of menu prices (plus tax and tips) via Stripe.

@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../components/Breadcrumbs";
 import DemoSection from "../components/DemoSection";
+import PageDates from "../components/PageDates";
 import RelatedLinks from "../components/RelatedLinks";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import {
   OG_IMAGES,
+  PAGE_DATES,
   SITE_URL,
   TWITTER_IMAGES,
   breadcrumbJsonLd,
@@ -15,6 +17,7 @@ import {
 
 const PATH = "/phone-orders-vs-pre-orders";
 const LABEL = "Phone Orders vs Pre-Orders";
+const DATES = PAGE_DATES[PATH];
 
 export const metadata: Metadata = {
   title: "Phone Orders vs Pre-Orders for Golf Courses",
@@ -23,6 +26,8 @@ export const metadata: Metadata = {
   alternates: { canonical: PATH },
   openGraph: {
     type: "article",
+    publishedTime: DATES.published,
+    modifiedTime: DATES.modified,
     url: `${SITE_URL}${PATH}`,
     siteName: "Foreturn IQ",
     title: "Phone Orders vs Pre-Orders for Golf Courses",
@@ -114,6 +119,8 @@ const jsonLd = {
       "@id": `${SITE_URL}${PATH}`,
       url: `${SITE_URL}${PATH}`,
       name: LABEL,
+      datePublished: DATES.published,
+      dateModified: DATES.modified,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       breadcrumb: { "@id": `${SITE_URL}${PATH}#breadcrumb` },
     },
@@ -155,6 +162,7 @@ export default function PhoneOrdersVsPreOrdersPage() {
             golfer shows up, and the kitchen has no idea when that will be. Here
             is the same order taken both ways.
           </p>
+          <PageDates path={PATH} className="text-white/60 mt-6" />
         </div>
       </section>
 
