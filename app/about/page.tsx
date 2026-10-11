@@ -9,7 +9,7 @@ import { FOUNDER, PRICING, SITE_URL, breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES
 export const metadata: Metadata = {
   title: { absolute: "About Foreturn IQ and Its Founder" },
   description:
-    "Foreturn IQ is a golf course F&B pre-ordering platform built by founder Dominick Del Bosque. How it works, how it makes money, and how to reach the founder directly.",
+    "Foreturn IQ is golf course F&B pre-ordering built by founder Dominick Del Bosque. How it works, how it makes money, and how to reach the founder directly.",
   alternates: { canonical: "/about" },
   openGraph: {
     type: "profile",

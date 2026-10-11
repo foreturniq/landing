@@ -11,7 +11,7 @@ const PATH = "/pricing";
 export const metadata: Metadata = {
   title: "Pricing: Free for the Course",
   description:
-    "Foreturn IQ costs your golf course nothing. Golfers pay a 5% + $0.50 service fee per order and your course keeps 100% of its menu prices, paid straight to your Stripe account.",
+    "Foreturn IQ costs your course nothing. Golfers pay a 5% + $0.50 service fee per order, and you keep 100% of menu prices, paid to your Stripe account.",
   alternates: { canonical: PATH },
   openGraph: {
     type: "website",

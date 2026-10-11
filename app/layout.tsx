@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Foreturn IQ",
   },
   description:
-    "The pre-ordering platform built for golf course GMs, assistant managers, and F&B directors. Let golfers order food and drinks before their round. Your kitchen gets a timed queue. No hardware, no retraining.",
+    "Golf course F&B pre-ordering for GMs and F&B directors. Golfers order food and drinks before their round, and your kitchen gets a timed queue. No new hardware.",
   alternates: {
     canonical: "/",
   },

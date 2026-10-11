@@ -13,7 +13,7 @@ import { breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 export const metadata: Metadata = {
   title: "Golf Cart GPS Food Orders Nobody's Watching",
   description:
-    "Most golf cart GPS ordering systems fire orders to a screen nobody's watching. Foreturn IQ sends every order directly to your kitchen dashboard. No missed tickets, no dead GPS screens.",
+    "Golf cart GPS screens fire food orders to a screen nobody's watching. Foreturn IQ sends every order straight to your kitchen dashboard, so no ticket is missed.",
   alternates: { canonical: "/golf-cart-food-ordering" },
   openGraph: {
     type: "website",

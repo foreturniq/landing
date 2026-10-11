@@ -13,7 +13,7 @@ import { breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 export const metadata: Metadata = {
   title: "League Night Food Pre-Orders, No Order Sheet",
   description:
-    "Stop passing around paper order sheets on league night. Foreturn IQ gives your league a pre-order link they fill out before arriving. Kitchen knows the count before anyone tees off.",
+    "Replace the paper order sheet on league night. Your league fills out a pre-order link before arriving, so the kitchen knows the count before anyone tees off.",
   alternates: { canonical: "/golf-league-pre-orders" },
   openGraph: {
     type: "website",
