@@ -5,7 +5,6 @@
 // Path -> GA4 content_group. Lets you compare conversion by pitch/page.
 export const CONTENT_GROUPS: Record<string, string> = {
   "/": "home",
-  "/v2": "home_v2",
   "/golf-cart-food-ordering": "lp_cart_ordering",
   "/golf-league-pre-orders": "lp_league_preorders",
   "/phone-orders-vs-pre-orders": "vs_phone_orders",
