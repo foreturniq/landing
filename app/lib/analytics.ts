@@ -7,6 +7,7 @@ export const CONTENT_GROUPS: Record<string, string> = {
   "/": "home",
   "/golf-cart-food-ordering": "lp_cart_ordering",
   "/golf-league-pre-orders": "lp_league_preorders",
+  "/call-ahead-turn-orders": "lp_call_ahead_turn",
   "/phone-orders-vs-pre-orders": "vs_phone_orders",
   "/about": "about",
   "/pricing": "pricing",

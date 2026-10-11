@@ -26,6 +26,12 @@ export const USE_CASES: UseCase[] = [
     blurb:
       "Replace the paper sign-up sheet. Kitchen knows the count before anyone tees off.",
   },
+  {
+    href: "/call-ahead-turn-orders",
+    label: "Call-Ahead Turn Orders",
+    blurb:
+      "Take turn orders off the phone. Golfers order from the cart, paid and timed to arrival.",
+  },
 ];
 
 export function breadcrumbJsonLd(href: string, label: string) {

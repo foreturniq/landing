@@ -19,6 +19,7 @@ Built for golf course general managers, assistant managers and F&B directors.
 - [Home](https://foreturniq.com/): product overview and FAQ
 - [Golf Cart Food Ordering](https://foreturniq.com/golf-cart-food-ordering): QR ordering that reaches the kitchen instead of an unwatched GPS screen
 - [Golf League Pre-Orders](https://foreturniq.com/golf-league-pre-orders): replacing the paper league-night order sheet
+- [Call-Ahead Turn Orders](https://foreturniq.com/call-ahead-turn-orders): replacing the call-the-grill phone number for turn orders with pre-orders from the cart
 - [Pricing](https://foreturniq.com/pricing): free for the course; 5% + $0.50 golfer fee, with an order and monthly calculator
 - [Phone Orders vs Pre-Orders](https://foreturniq.com/phone-orders-vs-pre-orders): taking food orders by phone compared with pre-orders
 - [About](https://foreturniq.com/about): founder and contact
