@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Byline from "../components/Byline";
 import DemoSection from "../components/DemoSection";
 import PageDates from "../components/PageDates";
 import RelatedLinks from "../components/RelatedLinks";
 import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import {
+  FOUNDER,
   OG_IMAGES,
   PAGE_DATES,
   SITE_URL,
   TWITTER_IMAGES,
+  authorJsonLd,
   breadcrumbJsonLd,
   serviceFeeCents,
 } from "../lib/site";
@@ -24,8 +27,10 @@ export const metadata: Metadata = {
   description:
     "Phone orders tie up a staff member, get written down over cart noise and aren't paid until pickup. See how golf course pre-orders compare, line by line.",
   alternates: { canonical: PATH },
+  authors: [{ name: FOUNDER.name, url: `${SITE_URL}/about` }],
   openGraph: {
     type: "article",
+    authors: [`${SITE_URL}/about`],
     publishedTime: DATES.published,
     modifiedTime: DATES.modified,
     url: `${SITE_URL}${PATH}`,
@@ -124,6 +129,16 @@ const jsonLd = {
       isPartOf: { "@id": `${SITE_URL}/#website` },
       breadcrumb: { "@id": `${SITE_URL}${PATH}#breadcrumb` },
     },
+    {
+      "@type": "Article",
+      "@id": `${SITE_URL}${PATH}#article`,
+      headline: "Phone Orders vs Pre-Orders for Golf Courses",
+      author: authorJsonLd(),
+      publisher: { "@id": `${SITE_URL}/#organization` },
+      datePublished: DATES.published,
+      dateModified: DATES.modified,
+      mainEntityOfPage: { "@id": `${SITE_URL}${PATH}` },
+    },
     breadcrumbJsonLd(PATH, LABEL),
     {
       "@type": "FAQPage",
@@ -155,6 +170,7 @@ export default function PhoneOrdersVsPreOrdersPage() {
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tighter text-white leading-[0.95] mb-6">
             Phone Orders vs Pre-Orders
           </h1>
+          <Byline className="text-white/60 mb-6" />
           <p className="text-lg text-white/60 leading-relaxed max-w-[60ch]">
             When golfers call in food from the course, someone stops what
             they&apos;re doing to answer, writes the order down over cart noise,

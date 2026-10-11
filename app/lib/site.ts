@@ -91,6 +91,16 @@ export const FOUNDER = {
   story: [] as string[],
 };
 
+// Author reference for Article markup; points at the Person on /about.
+export function authorJsonLd() {
+  return {
+    "@type": "Person",
+    "@id": `${SITE_URL}/about#founder`,
+    name: FOUNDER.name,
+    url: `${SITE_URL}/about`,
+  };
+}
+
 // ─── Proof (fill in with real data only; every block hides itself when empty)
 export type PilotStat = { value: string; label: string };
 export const PILOT_STATS: { updated: string; stats: PilotStat[] } = {
