@@ -28,7 +28,7 @@ const steps = [
   {
     number: "03",
     title: "Order lands in the kitchen dashboard",
-    body: "Tickets appear instantly, bucketed by timing: Prepare Now, Coming Up, Later Today. Each shows predicted arrival and prep start 15 minutes before the golfer gets there.",
+    body: "Tickets appear instantly, bucketed by timing: Prepare Now, Coming Up, Later Today. Each shows predicted arrival and when to start prep, tightening as the golfer gets closer when they share their location.",
   },
   {
     number: "04",

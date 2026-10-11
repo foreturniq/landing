@@ -6,7 +6,8 @@ Built for golf course general managers, assistant managers and F&B directors.
 
 ## How it works
 - Golfers choose a pickup window: Before Round, At the Turn or After Round.
-- Orders land in a kitchen queue bucketed Prepare Now, Coming Up, Later Today, with each golfer's predicted arrival and a prep start 15 minutes before it.
+- Orders land in a kitchen queue bucketed Prepare Now, Coming Up, Later Today, with each golfer's predicted arrival and when to start prep.
+- Golfers are asked to share their phone's location. If they allow it, the prep window tightens as they get closer to pickup; if they decline, the order runs on the estimated arrival time.
 - Every order gets a 4-character pickup code.
 - Payments settle directly to the course's own Stripe account.
 
@@ -20,6 +21,11 @@ Built for golf course general managers, assistant managers and F&B directors.
 - [Golf Cart Food Ordering](https://foreturniq.com/golf-cart-food-ordering): QR ordering that reaches the kitchen instead of an unwatched GPS screen
 - [Golf League Pre-Orders](https://foreturniq.com/golf-league-pre-orders): replacing the paper league-night order sheet
 - [Call-Ahead Turn Orders](https://foreturniq.com/call-ahead-turn-orders): replacing the call-the-grill phone number for turn orders with pre-orders from the cart
+- [Shotgun Starts & Outings](https://foreturniq.com/shotgun-start-food-orders): food pre-orders for shotgun starts, tournaments and outings, timed per group
+- [Weather Delays](https://foreturniq.com/weather-delay-food-orders): keeping turn food from being wasted during lightning holds and weather delays
+- [Hot Food at the Turn](https://foreturniq.com/hot-food-at-the-turn): timing turn food to the golfer's real pace of play so it is hot on arrival
+- [Short-Staffed Kitchens](https://foreturniq.com/short-staffed-golf-kitchen): running the grill with one cook using a queue sorted by arrival
+- [After-Round Orders](https://foreturniq.com/after-round-food-orders): after-round and to-go orders placed on the back nine, ready as golfers finish
 - [Pricing](https://foreturniq.com/pricing): free for the course; 5% + $0.50 golfer fee, with an order and monthly calculator
 - [Phone Orders vs Pre-Orders](https://foreturniq.com/phone-orders-vs-pre-orders): taking food orders by phone compared with pre-orders
 - [About](https://foreturniq.com/about): founder and contact

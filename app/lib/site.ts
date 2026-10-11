@@ -32,6 +32,36 @@ export const USE_CASES: UseCase[] = [
     blurb:
       "Take turn orders off the phone. Golfers order from the cart, paid and timed to arrival.",
   },
+  {
+    href: "/shotgun-start-food-orders",
+    label: "Shotgun Starts & Outings",
+    blurb:
+      "Orders taken before the shotgun, each group's food fired as they get close.",
+  },
+  {
+    href: "/weather-delay-food-orders",
+    label: "Weather Delays",
+    blurb:
+      "Prep follows where golfers are, so a lightning hold doesn't waste the food.",
+  },
+  {
+    href: "/hot-food-at-the-turn",
+    label: "Hot Food at the Turn",
+    blurb:
+      "Prep tightens as golfers get closer, so food is hot whatever the pace of play.",
+  },
+  {
+    href: "/short-staffed-golf-kitchen",
+    label: "Short-Staffed Kitchens",
+    blurb:
+      "One cook, one queue sorted by who is arriving next.",
+  },
+  {
+    href: "/after-round-food-orders",
+    label: "After-Round Orders",
+    blurb:
+      "Food ready as golfers walk off 18, ordered on the back nine.",
+  },
 ];
 
 export function breadcrumbJsonLd(href: string, label: string) {
@@ -53,7 +83,7 @@ export function breadcrumbJsonLd(href: string, label: string) {
 export type PageDates = { published: string; modified: string }; // YYYY-MM-DD
 
 export const PAGE_DATES: Record<string, PageDates> = {
-  "/phone-orders-vs-pre-orders": { published: "2026-10-10", modified: "2026-10-10" },
+  "/phone-orders-vs-pre-orders": { published: "2026-10-10", modified: "2026-10-11" },
 };
 
 export function formatPageDate(iso: string) {

@@ -77,7 +77,7 @@ const benefits = [
   },
   {
     title: "Timed queue, not just a ticket list",
-    body: "The kitchen dashboard buckets orders by when to prep: Prepare Now, Coming Up, Later Today. Each ticket shows the golfer's predicted arrival so prep starts 15 minutes before they get there.",
+    body: "The kitchen dashboard buckets orders by when to prep: Prepare Now, Coming Up, Later Today. Each ticket shows the golfer's predicted arrival, and if they share their phone's location, the prep window tightens as they get closer.",
   },
   {
     title: "No new hardware, no retraining",

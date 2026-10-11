@@ -36,7 +36,7 @@ const benefits = [
   {
     Icon: TimerIcon,
     title: "Your kitchen knows when, not just what",
-    body: "The order queue organizes tickets by timing: Prepare Now, Coming Up, Later Today. Each shows when to start prepping, 15 minutes before the golfer arrives.",
+    body: "The order queue organizes tickets by timing: Prepare Now, Coming Up, Later Today. When golfers share their phone's location, the prep window tightens as they get closer, so food is ready when they pull up instead of sitting.",
   },
   {
     Icon: WrenchIcon,
@@ -49,13 +49,13 @@ const platformFeatures = [
   {
     tag: "Kitchen",
     name: "Real-time order queue",
-    body: "Orders arrive in a live dashboard bucketed by timing: Prepare Now, Coming Up, and Later Today. Each ticket shows the golfer's predicted arrival and when to start prepping, 15 minutes before they get there.",
+    body: "Orders arrive in a live dashboard bucketed by timing: Prepare Now, Coming Up, and Later Today. Each ticket shows the golfer's predicted arrival and when to start prepping. If the golfer shares their location, both update as they get closer; if not, they run on the estimated time.",
     Mockup: OrderQueueMockup,
   },
   {
     tag: "Ordering",
     name: "Three pickup windows",
-    body: "Golfers choose Before Round, At Turn, or After Round when they order. Each window has its own timing logic. Predicted arrival and prep start are calculated automatically.",
+    body: "Golfers choose Before Round, At Turn, or After Round when they order. Each window has its own timing logic. Predicted arrival and prep start are calculated automatically and sharpen with the golfer's location when they allow it.",
     Mockup: OrderingWindowsMockup,
   },
   {
@@ -121,6 +121,10 @@ const faqs = [
   {
     q: "Will golfers actually use it?",
     a: "They scan a QR code from the cart and pay on their own phone. No app to download, no account to create. Groups coming off the back nine or waiting in the pro shop have a few minutes and a reason to order. Adoption friction is near zero.",
+  },
+  {
+    q: "How does the kitchen know when a golfer is close?",
+    a: "When golfers order, their phone asks to share location. If they allow it, the prep window tightens as they get closer to pickup, so the kitchen starts at the right moment and food doesn't sit. If they decline, the order runs on the estimated arrival time for their pickup window.",
   },
   {
     q: "Does it connect to our POS?",

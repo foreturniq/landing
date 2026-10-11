@@ -53,7 +53,7 @@ const rows: [string, string, string][] = [
   ["Who takes the order", "A staff member answers the phone and writes it down.", "The golfer, on their own phone. No app, no account."],
   ["When it's paid", "At pickup, if the golfer shows up.", "Up front, by card, before the kitchen starts."],
   ["Getting it right", "Written down over cart noise, then read back if there's time.", "Picked item by item from your menu, so there's nothing to mishear."],
-  ["When the kitchen starts", "When the ticket reaches the kitchen, whenever that is.", "15 minutes before the golfer's predicted arrival, shown on every ticket."],
+  ["When the kitchen starts", "When the ticket reaches the kitchen, whenever that is.", "Timed to the golfer's predicted arrival, and tightened by their phone's location as they get closer."],
   ["On a busy turn", "Calls stack up or ring out while staff are at the counter.", "Orders keep landing in the queue. Nobody has to pick up a phone."],
   ["At pickup", "A name called across the counter.", "A 4-character pickup code."],
   ["Cost to the course", "Staff time on every call.", "$0. Golfers pay a 5% + $0.50 service fee per order."],
@@ -235,8 +235,11 @@ export default function PhoneOrdersVsPreOrdersPage() {
               With pre-orders, golfers order before the round, from the cart or
               at the turn, and every order lands in a live kitchen queue bucketed
               Prepare Now, Coming Up and Later Today. Each ticket shows the
-              golfer&apos;s predicted arrival and a prep start 15 minutes before
-              it, so the kitchen works ahead of the rush instead of reacting to it.
+              golfer&apos;s predicted arrival and when to start prep. If the golfer
+              shares their phone&apos;s location, that window tightens as they get
+              closer, so the kitchen works ahead of the rush instead of reacting
+              to it, and food doesn&apos;t sit waiting for a group that&apos;s
+              running behind.
             </p>
           </div>
 

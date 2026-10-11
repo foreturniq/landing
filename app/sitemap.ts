@@ -27,6 +27,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://foreturniq.com/shotgun-start-food-orders",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://foreturniq.com/weather-delay-food-orders",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://foreturniq.com/hot-food-at-the-turn",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://foreturniq.com/short-staffed-golf-kitchen",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: "https://foreturniq.com/after-round-food-orders",
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: "https://foreturniq.com/pricing",
       lastModified: new Date(),
       changeFrequency: "monthly",
