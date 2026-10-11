@@ -11,7 +11,7 @@ import { FounderCard, NotReadyLinks } from "../components/Proof";
 import { breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Golf League Food Pre-Orders, No Paper Sheet",
+  title: "League Night Food Pre-Orders, No Order Sheet",
   description:
     "Stop passing around paper order sheets on league night. Foreturn IQ gives your league a pre-order link they fill out before arriving. Kitchen knows the count before anyone tees off.",
   alternates: { canonical: "/golf-league-pre-orders" },
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://foreturniq.com/golf-league-pre-orders",
     siteName: "Foreturn IQ",
-    title: "Golf League Food Pre-Orders, No Paper Sheet",
+    title: "League Night Food Pre-Orders, No Order Sheet",
     description:
       "Stop passing around paper order sheets on league night. Foreturn IQ gives your league a pre-order link they fill out before arriving.",
     images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golf League Food Pre-Orders | Foreturn IQ",
+    title: "League Night Food Pre-Orders | Foreturn IQ",
     description:
       "Replace paper league night order sheets with a digital pre-order link. Kitchen preps to a real count before anyone arrives.",
     images: TWITTER_IMAGES,

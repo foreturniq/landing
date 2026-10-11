@@ -11,7 +11,7 @@ import { FounderCard, NotReadyLinks } from "../components/Proof";
 import { breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "Golf Cart Food Ordering Staff Actually See",
+  title: "Golf Cart GPS Food Orders Nobody's Watching",
   description:
     "Most golf cart GPS ordering systems fire orders to a screen nobody's watching. Foreturn IQ sends every order directly to your kitchen dashboard. No missed tickets, no dead GPS screens.",
   alternates: { canonical: "/golf-cart-food-ordering" },
@@ -19,14 +19,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://foreturniq.com/golf-cart-food-ordering",
     siteName: "Foreturn IQ",
-    title: "Golf Cart Food Ordering Staff Actually See",
+    title: "Golf Cart GPS Food Orders Nobody's Watching",
     description:
       "Most golf cart GPS ordering systems fire orders to a screen nobody's watching. Foreturn IQ sends every order directly to your kitchen dashboard.",
     images: OG_IMAGES,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Golf Cart Food Ordering Staff Actually See",
+    title: "Golf Cart GPS Food Orders Nobody's Watching",
     description:
       "GPS cart screens fire orders your staff never sees. Foreturn IQ routes every ticket straight to the kitchen dashboard.",
     images: TWITTER_IMAGES,

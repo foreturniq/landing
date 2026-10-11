@@ -7,7 +7,7 @@ import SiteNav from "../components/SiteNav";
 import { FOUNDER, PRICING, SITE_URL, breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
 export const metadata: Metadata = {
-  title: "About the Founder",
+  title: { absolute: "About Foreturn IQ and Its Founder" },
   description:
     "Foreturn IQ is a golf course F&B pre-ordering platform built by founder Dominick Del Bosque. How it works, how it makes money, and how to reach the founder directly.",
   alternates: { canonical: "/about" },

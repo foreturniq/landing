@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://foreturniq.com"),
   title: {
-    default: "Golf Course F&B Pre-Ordering for GMs | Foreturn IQ",
+    default: "More F&B Revenue Per Round for Golf Courses | Foreturn IQ",
     template: "%s | Foreturn IQ",
   },
   description:
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://foreturniq.com",
     siteName: "Foreturn IQ",
-    title: "Golf Course F&B Pre-Ordering for GMs | Foreturn IQ",
+    title: "More F&B Revenue Per Round for Golf Courses | Foreturn IQ",
     description:
       "The pre-ordering platform built for golf course GMs, assistant managers, and F&B directors. More F&B revenue, no new hardware, no staff retraining.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Foreturn IQ - Golf Course F&B Pre-Ordering for GMs & F&B Directors",
+    title: "More F&B Revenue Per Round for Golf Courses | Foreturn IQ",
     description:
       "Built for golf course general managers and F&B directors. More revenue per round, no hardware, no retraining.",
   },
