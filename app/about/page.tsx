@@ -6,6 +6,10 @@ import SiteFooter from "../components/SiteFooter";
 import SiteNav from "../components/SiteNav";
 import { FOUNDER, PRICING, SITE_URL, breadcrumbJsonLd, OG_IMAGES, TWITTER_IMAGES } from "../lib/site";
 
+// Pure static page: no request data, so it is served as a prerendered file.
+// Keep it that way; this route was flagged for slow response times.
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: { absolute: "About Foreturn IQ and Its Founder" },
   description:
