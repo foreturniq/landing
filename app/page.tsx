@@ -6,7 +6,7 @@ import UseCasesMenu from "./components/UseCasesMenu";
 import SectionTracker from "./components/SectionTracker";
 import SiteFooter from "./components/SiteFooter";
 import { FounderCard, NotReadyLinks, PilotStats, Testimonials } from "./components/Proof";
-import { CONTACT, DEMO_MENU_URL, PRICING } from "./lib/site";
+import { COMPANY_SOCIAL, CONTACT, DEMO_MENU_URL, PRICING } from "./lib/site";
 import {
   CurrencyDollarSimpleIcon,
   TrendUpIcon,
@@ -148,6 +148,7 @@ const jsonLd = {
       logo: "https://foreturniq.com/logo.png",
       email: CONTACT.info,
       founder: { "@id": "https://foreturniq.com/about#founder" },
+      sameAs: Object.values(COMPANY_SOCIAL).filter(Boolean),
       contactPoint: [
         {
           "@type": "ContactPoint",

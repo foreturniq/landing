@@ -156,8 +156,15 @@ export const TESTIMONIALS: Testimonial[] = [];
 export type Mention = { outlet: string; title: string; url: string; date: string };
 export const MENTIONS: Mention[] = [];
 
+// Company-owned profiles. Each one shows in the footer and in the
+// Organization sameAs on the homepage. Empty values are skipped.
+export const COMPANY_SOCIAL = {
+  instagram: "https://www.instagram.com/foreturniq/",
+};
+
 export type SocialLink = { label: string; url: string };
 export const SOCIAL_LINKS: SocialLink[] = [
+  ...(COMPANY_SOCIAL.instagram ? [{ label: "Instagram", url: COMPANY_SOCIAL.instagram }] : []),
   ...(FOUNDER.linkedin ? [{ label: "LinkedIn", url: FOUNDER.linkedin }] : []),
 ];
 
